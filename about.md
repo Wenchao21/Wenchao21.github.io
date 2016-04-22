@@ -4,8 +4,14 @@ title: About
 permalink: /about/
 ---
 
-One needs 3 things to be truly happy living in the world: some thing to do, some one to love, some thing to hope for!
-中文测试！
+青天有月来几时？我今停杯一问之。
+人攀明月不可得，月行却与人相随。
+皎如飞镜临丹阙。绿烟灭尽清辉发。
+但见宵从海上来，宁知晓向云间没？
+白兔捣药秋复春，嫦娥孤栖与谁邻？
+今人不见古时月，今月曾经照古人。
+古人今人若流水，共看明月皆如此。
+唯愿当歌对酒时，月光长照金樽里。
 
 WeChat: sohardname110
 Email: hewenchao21@163.com
