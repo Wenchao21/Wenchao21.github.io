@@ -4,7 +4,8 @@ title: About
 permalink: /about/
 ---
 
-关于这个博客，只为学习和交流使用，每天把自己的进步和学习，记录于此。
+One needs 3 things to be truly happy living in the world: some thing to do, some one to love, some thing to hope for.
 
-联系我WeChat：sohardname110
+
+WeChat：sohardname110
 Email: hewenchao21@163.com
