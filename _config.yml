@@ -6,6 +6,8 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
+
+encoding: UTF-8
 title: 一蓑烟雨任平生
 email: hewenchao21@163.com
 description: > # this means to ignore newlines until "baseurl:"
@@ -16,6 +18,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: Wenchao21
 github_username:  Wenchao21
+
 
 # Build settings
 markdown: kramdown
