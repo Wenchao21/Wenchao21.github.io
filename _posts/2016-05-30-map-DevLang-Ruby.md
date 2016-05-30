@@ -1,4 +1,12 @@
+---
+layout: post
+title:  "Ruby的技能图谱"
+date:   2016-05-30 23:40:54 +0800
+---
+
 # Ruby 技能图谱
+
+本篇博客为摘抄自StuQ 程序员技能图谱是由 StuQ（http://www.stuq.org/）发起的一个技术社区开源项目，如要引用，请移步到官网。谢谢。
 
 说明： 本图谱只捡重点的列举，并非包含全部。文中所列举或没有列举的资源信息都可以在[awesome-ruby](https://github.com/markets/awesome-ruby)中找到。
 
@@ -71,9 +79,4 @@
   - 尝试了解基于actor模型的Ruby并发库Celluloid。
 - 社区中各种Gem的实现原理及其用法
 
-## 学习资源
 
-
-- [「诱人的Ruby」视频教程](http://edu.51cto.com/lecturer/index/user_id-140924.html)
-- [Ruby Weekly订阅](http://rubyweekly.com/)
-- 其他请自行Google: Ruby books
