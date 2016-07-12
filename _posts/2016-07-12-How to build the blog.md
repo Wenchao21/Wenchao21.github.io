@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to build the blog 
+title: How to build the blog
 date:   2016-7-12
 ---
 
