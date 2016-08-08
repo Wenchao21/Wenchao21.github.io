@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to build the blog 
+title: 如何去搭建这个博客
 date:   2016-7-12
 ---
 
