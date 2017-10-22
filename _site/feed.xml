@@ -1,101 +1,637 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>何文超的博客</title>
-    <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-</description>
-    <link>http://yourdomain.com/</link>
-    <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 21 Apr 2016 22:49:25 +0800</pubDate>
-    <lastBuildDate>Thu, 21 Apr 2016 22:49:25 +0800</lastBuildDate>
-    <generator>Jekyll v3.1.3</generator>
+    <title>烟雨任平生的博客</title>
+    <description></description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 22 Oct 2017 16:00:36 +0800</pubDate>
+    <lastBuildDate>Sun, 22 Oct 2017 16:00:36 +0800</lastBuildDate>
+    <generator>Jekyll v3.6.2</generator>
     
       <item>
-        <title>Welcome to Jekyll!</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+        <title>Python中的super</title>
+        <description>&lt;h4 id=&quot;反正一句话-不要一说到-super-就想到父类super-指的是-mro-中的下一个类&quot;&gt;&lt;strong&gt;反正一句话： 不要一说到 super 就想到父类！super 指的是 MRO 中的下一个类！&lt;/strong&gt;&lt;/h4&gt;
 
-&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+&lt;p&gt;首先必须要理解MRO&lt;/p&gt;
 
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+&lt;p&gt;其次再去理解多继承&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Tom&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &#39;Hi, Tom&#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;再次要去理解新式类&lt;/p&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;最后在做一下实践，才能理解super&lt;/p&gt;
 
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c&quot;&gt;#先说一点：如果是我写，坚决不用super了，我更想用类名加方法名去调用，这样我认为是最直接的，知道哪个类里面的方法。&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#切记一个人的代码不要两者混用，到时候自己都搞不清楚。&lt;/span&gt;
+
+
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Child&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Parent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Child&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;nb&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Child&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;c&quot;&gt;#上述两段代码有什么区别吗？嘿嘿，应该是没有区别，一点区别都没有！这个是最简单的继承，如果类之间的继承复杂起来了呢？&lt;/span&gt;
+
+
+&lt;span class=&quot;c&quot;&gt;#既然没有区别，那么为什么还要用super呢？看下面的代码&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#首先必须要理解MRO&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#其次再去理解多继承&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#再次要去理解新式类&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#最后在做一下实践，才能理解super&lt;/span&gt;
+
+
+&lt;span class=&quot;c&quot;&gt;#总结一下： 直接用类名加方法名去调用，显示更直接，也更方便方法的查找，如果用super，这里就是关键了，super在调用的时候，是MRO的顺序来寻找方法的，不一定是父类的方法。&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#不行了，越说越多了，已经讲不完了。今天先写到这里，后面再补充。先抄上知乎上的一段话，讲的很不错。&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#不要一说到 super 就想到父类！super 指的是 MRO 中的下一个类！&lt;/span&gt;
+
+      
+
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+ 
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+ 
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+ 
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+ 
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+ 
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+ 
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'__main__'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__mro__&lt;/span&gt;
+
+
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;gt;, &amp;lt;class '&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;gt;, &amp;lt;class '&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; &amp;lt;class '&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;gt;, &amp;lt;class '&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;gt;, &amp;lt;class '&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; &amp;lt;type '&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
+
+
+
+
+
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
-        <pubDate>Thu, 21 Apr 2016 19:24:54 +0800</pubDate>
-        <link>http://yourdomain.com/jekyll/update/2016/04/21/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/jekyll/update/2016/04/21/welcome-to-jekyll.html</guid>
+        <pubDate>Thu, 02 Mar 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/03/02/Python-%E4%B8%AD%E7%9A%84super.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/03/02/Python-%E4%B8%AD%E7%9A%84super.html</guid>
         
-        
-        <category>jekyll</category>
-        
-        <category>update</category>
         
       </item>
     
       <item>
-        <title>my second blog</title>
-        <description>&lt;p&gt;here is my second blog, kjlasdjglkew
-kwejglkwhelkqjgwlegjwlejqgweg
-wejhglkjfdsdffdjdfkjskdjflsjdfljmenfm,wne,fnwkehflsajdvlsanv&lt;/p&gt;
+        <title>解决pycharm中无法正确导入模块问题</title>
+        <description>&lt;p&gt;在创建了一个Scrapy项目之后，我把这个项目放在了一个目录下，变成了：&lt;/p&gt;
+
+&lt;p&gt;Folder/scrapy_project&lt;/p&gt;
+
+&lt;p&gt;当我在scrapy_project的spider的目录中，创建一个spider文件，当在这个spider文件中，尝试使用from scrapy_project import items的时候，IDE找不到 scrapy_project这个package，经过反复的排查，也看了一下scrapy_project中也有__init__.py这个文件啊，为什么就找不到呢？&lt;/p&gt;
+
+&lt;p&gt;于是我就打开的python console，在spider目录中去导入，发现没有任何问题，可以正常导入，只是在IDE（pycharm）中找不到这个文件，后来发现是因为pycharm的setting问题：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;如果你用ide直接打开scrapy_project这个目录，记得，是项目的目录，并不是Folder这个目录，这个from scrapy_project import item是可以被找到的。&lt;/li&gt;
+  &lt;li&gt;如果你用IDE打开了scrapy_project上一级的目录，Folder这个目录，那么是找不到的，那么如何做呢？答案是你把scrapy_project这个项目目录，make as sources root目录，这样就可以正确查找。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;原理：&lt;/p&gt;
+
+&lt;p&gt;在你把项目目录设置层sources root， 这个package文件，将会被添加到sys.path的这个路径下，那么当你正确的from xx import xx的时候，from将会从sys.path这个路径中找到这个scrapy_project这个package，那么久可以正常导入。这个问题，一定要对python的import机制进行深入的了解才行，后面我会把这个写的更明白，这次先把IDE中无法import问题解决。&lt;/p&gt;
+
 </description>
-        <pubDate>Tue, 19 Apr 2016 19:24:54 +0800</pubDate>
-        <link>http://yourdomain.com/jekyll/update/2016/04/19/my-second-blog.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/jekyll/update/2016/04/19/my-second-blog.html</guid>
+        <pubDate>Wed, 22 Feb 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/02/22/%E8%A7%A3%E5%86%B3%E4%B8%80%E4%B8%AApycharm%E4%B8%AD%E6%97%A0%E6%B3%95%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97%E9%97%AE%E9%A2%98.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/02/22/%E8%A7%A3%E5%86%B3%E4%B8%80%E4%B8%AApycharm%E4%B8%AD%E6%97%A0%E6%B3%95%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97%E9%97%AE%E9%A2%98.html</guid>
         
-        
-        <category>jekyll</category>
-        
-        <category>update</category>
         
       </item>
     
       <item>
-        <title>how to build a jeykll blog</title>
-        <description>&lt;p&gt;step1: aksldjglwe
-step2: lkjeglkjlkesjg
-step3: lwkjelkgjlkwejg
-step4: lkjselgkjlwehglkwjelkgjslkdjlkj&lt;/p&gt;
+        <title>字符编码和字符集的来龙去脉</title>
+        <description>&lt;p&gt;当时做了一个用requests去爬取dotamax上的英雄使用次数和胜率，出现了一个爬取下来的数据，如果是中文的话，在windows下的cmd中查看是乱码问题，我敢肯定，这是字符编码问题，为了彻底搞明白这个字符集和字符编码，我就在这里进行一个总结，先讲一个故事，这样理解更深刻。&lt;/p&gt;
+
+&lt;p&gt;两个人说话，必须使用同一种语言，不同语言，都能表达同一个意思，但是对方听不懂，所以需要翻译。计算机的字符的表示，也是一样的。
+字符集（你可以看做是英语，法语，中文）常见的包括：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;ASCII&lt;/li&gt;
+  &lt;li&gt;ISO 8859-1&lt;/li&gt;
+  &lt;li&gt;Unicode&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;那么好了，都说中文，也不一定听的懂了？因为有各地的方言，河南话，上海话，还有普通话。于是，就有了字符编码。
+字符编码(你可以看做是普通话，河南话，上海话)常见的包括：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;UTF-8&lt;/li&gt;
+  &lt;li&gt;UTF-16&lt;/li&gt;
+  &lt;li&gt;UTF-32&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;那么在这个世界上为了方便沟通，便有人规定了，好了，现在全世界只准用中文讲话（Unicode），而且必须是普通话（UTF-8）。 所以这就解释了，为什么UTF-8解决了你的大多数沟通（编码）问题。&lt;/p&gt;
+
+&lt;p&gt;好的，直接看代码：&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#coding = utf-8&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;requests&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://dotamax.com/player/hero/255619340/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encoding&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;那么，下面来看我遇到的问题，我在爬取了dotamax上的信息之后，虽然我在dota.py这个文件中生命code的编码是UTF-8，但是这个是code的编码，就是你的代码编码，那么我如果在python自带的python gui里面运行时什么结果呢？中文是可以正常显示的，那么我如果用windows下的cmd执行的话，会是什么结果呢？结果就是乱码。&lt;/p&gt;
+
+&lt;p&gt;分析如下：&lt;/p&gt;
+
+&lt;p&gt;第三句代码打印了下载下载的res的编码，结果是UTF-8，ok，原来这个网页说的语言是“中文啊”（UTF-8，Unicode的一种），好的，那么我们用python自带的python gui执行的时候，我们去查看一下python gui能识别什么编码格式？已查看setting，发现，这家伙也是讲“中文啊”（UTF-8，Unicode的一种），所以这里显示正常，那么，windows的cmd为什么就是乱码了呢？我们去查看一下cmd的setting，那么问题来了，这个家伙是讲“英语”（GBK，另一种字符集）的啊，他不认识中文啊，所以cmd就傻掉了，显示乱码了，那么解决办法怎么办呢？&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;把网页说的“中文”转换成“英语”，ｃｍｄ就可以正常沟通了。&lt;/li&gt;
+  &lt;li&gt;把ｃｍｄ的“英语”转换成“中文”， 网页也可以正常沟通了。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;到这里，你应该彻底明白编码问题了，顺着这个思路，我想在字符集和字符编码上，你不会再遇到其他问题了，因为了解了本质，一切都好说。&lt;/p&gt;
+
+&lt;p&gt;转载请说明出处，原创。嘿嘿&lt;/p&gt;
 </description>
-        <pubDate>Sat, 28 Feb 2015 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/wenchao21/2015/02/28/how-to-build.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/wenchao21/2015/02/28/how-to-build.html</guid>
+        <pubDate>Tue, 21 Feb 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/02/21/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/02/21/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89.html</guid>
         
-        
-        <category>Wenchao21</category>
         
       </item>
     
       <item>
-        <title>my first blog</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+        <title>关于后面的博客内容</title>
+        <description>&lt;p&gt;前面的博客大多写了语言上的基础知识，从这里开始，将会对真正的应用上面遇到的问题，在这里进行总结和发布，对于自己职业的规划，只要面向下面几个方向，大多是是用python进行实践。&lt;/p&gt;
 
-&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+&lt;p&gt;我将后续的学习和总结分为三个系列：&lt;/p&gt;
 
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Python Web系列，主要根据自己当前做的项目进行总结&lt;/li&gt;
+  &lt;li&gt;Python 爬虫系列， 主要是用Scrapy进行数据的爬取总结&lt;/li&gt;
+  &lt;li&gt;Python 自然语言处理系列，主要是NLP方面的学习&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Tom&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &#39;Hi, Tom&#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;Web方面，将会使用Flask以及Flask某些常用插件的学习，还有自己去设计Restful api，以及数据的存储，HTTP协议，前端尽量少些点吧，如果有时间的话，会写点。项目：ＵＸ的数据录入管理系统。&lt;/p&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;爬虫方面，将会熟练使用Requests库，还要Srapy框架的使用，了解分布式，多线程方面的爬虫，主要去做一点模拟浏览器登陆，还有动态网页的抓取这两方面，另外多注意反扒网站的抓取。项目：动态爬取搜房网上海外环新房信息&lt;/p&gt;
+
+&lt;p&gt;自然语言处理，将会使用NLTK，还有一些中文分词库，先进行一些简单的了解学习，学习一下数学方法和公式，以及常用的算法分析，尽量去对文本的分词，标注，情感分析进行训练，后面慢慢的进行模型训练。项目：尝试去分析酷我流行音乐前50名歌手的前20首歌词内容进行分析，50x20=1000首歌曲分析。&lt;/p&gt;
+
+&lt;p&gt;我始终相信，编程语言只是工具，分析方法和思路，才是解决问题的关键，所以我会在每一篇文章前面，都会对思路和情景，进行总结和分析。&lt;/p&gt;
+</description>
+        <pubDate>Tue, 21 Feb 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/02/21/%E5%85%B3%E4%BA%8E%E5%90%8E%E9%9D%A2%E7%9A%84%E5%8D%9A%E6%96%87.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/02/21/%E5%85%B3%E4%BA%8E%E5%90%8E%E9%9D%A2%E7%9A%84%E5%8D%9A%E6%96%87.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Python类中所有的方法详解</title>
+        <description>&lt;p&gt;Python的静态方法和类成员方法都可以被实例和类调用，区别如下。&lt;/p&gt;
+
+&lt;p&gt;1）静态方法第一个参数不用传入self，可以理解为function。&lt;/p&gt;
+
+&lt;p&gt;2）类成员方法需传入代表本类的cls参数；&lt;/p&gt;
+
+&lt;p&gt;3）静态方法是无法访问实例变量的，而类成员方法也同样无法访问实例变量，但可以访问类变量；&lt;/p&gt;
+
+&lt;p&gt;4）我把print看做静态方法，不知道可靠不？&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c&quot;&gt;# coding=utf-8&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 关于python里面的方法,有必要做一下系统的整理&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# python里面的方法分为两类:  静态方法,类成员方法&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 请看如下代码&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ClassTest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;val1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'this is val1'&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'this is a instance val2'&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cc&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;normalmethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val2&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val3&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dd&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val4&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@staticmethod&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;staticfunc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'this is a static method!'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argv2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argv2&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@classmethod&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;classmethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'this is a class method'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val1&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 实例化一个变量做测试,并且传入一个字符串,作为变量&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 这个变量被__init__()方法调用,用来初始化这个对象&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;classtest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ClassTest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;val3 value&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;c&quot;&gt;# 在类中,普通定义一个方法,也成实例方法,只有实例化一个对象之后,才能有这个实例来调用&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 实例方法可以直接访问实例的实例变量(self.val2,self.val3,self.val4)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 所有的成员变量,都可以作为他的参数来调用&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 顾名思义,实例方法,只能被一个实例调用,定义的时候,第一个参数必须是self&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;classtest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;normalmethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;this is a dd value&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#正确调用&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ClassTest.normalmethod(&quot;this is a test&quot;)      #错误调用&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 用@staticmethod装饰器来定义的方法,成为静态方法&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 静态方法无法访问类中的一切变量,你可以理解为这个是独立存在的。&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 静态方法,可以被实例调用,也可以被类调用&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 说是调用,不如说: 静态方法前面的实例,还有类,只是指定这个方法的作用域&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;classtest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;staticfunc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;aaaa&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bbbbbb&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;#正确调用&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ClassTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;staticfunc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ccccc&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dddddd&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#正确调用,我会强烈使用这个&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 用@classmethod装饰器定义的方法,称作类方法,只能调用类变量,无法调用实例变量。&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 传进去的第一个参数,必须是cls,即这个类的名字。&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;classtest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;classmethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;         &lt;span class=&quot;c&quot;&gt;#正确调用&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ClassTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;classmethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;         &lt;span class=&quot;c&quot;&gt;#正确调用,我会强烈使用这个。&lt;/span&gt;
+
+
+&lt;span class=&quot;c&quot;&gt;# 注意:这里的名词和使用习惯,我是采用和ruby对比的方法记忆的&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 为了不让两种语言在我脑子中乱掉,尽量采用相似的记忆方法。&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 如果你没有在python里面这些名词的叫法,请参考下ruby,谢谢。不正确的,请指正。&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Mon, 19 Sep 2016 06:53:54 +0800</pubDate>
+        <link>http://localhost:4000/2016/09/19/Python%E7%B1%BB%E4%B8%AD%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/09/19/Python%E7%B1%BB%E4%B8%AD%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>如何去搭建这个博客</title>
+        <description>&lt;p&gt;此处的资料，全为自己平时的自学，以及在我们几个好朋友群里面讨论的东西，有正确的，有不正确的，如果有什么高见，请email给我：hewenchao21@163.com。
+海纳百川，有容乃大；壁立千仞，无欲则刚。&lt;/p&gt;
+
+&lt;p&gt;本博客制作流程和原理概要：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. 原理：&lt;/strong&gt;
+          采用Jekyll框架创建博客，然后部署到github上面。Github上的Gitpage，后台采用的引擎便是Jekyll，所以在本地创建好博客工程后，可以直接往Github上部署，然后单独购买域名，将自己的域名，指向自己的博客，所以你可以直接访问域名，来达到访问博客的目的。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. 名词解释&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Jekyll：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;用ruby开发的一个web框架，主要用来生成一些简单的静态web网页，为用户快速打造一个简单的站点，十分轻量级，很简单。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Github：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;一个用来托管代码的一个host，你可以将你的代码和一些开源项目push上去，github上托管有非常多的开源项目。总之就是一个提供代码托管服务的平台。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Github Page：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;一个免费提供可以部署Jekyll开发的博客项目。后台引擎采用的是Jekkly，所以只要把工程push上去，即可访问自己的网页。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Markdown：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Markdown格式的文件，你可以当做和word一样的东西，是一种文本书写格式。提供更为优美的书写格式。Jekyll的post采用的就是Markdown格式的文件。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3. 制作流程：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;生成本地工程&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;h5 id=&quot;安装ruby&quot;&gt;&lt;strong&gt;安装ruby&lt;/strong&gt;&lt;/h5&gt;
+
+    &lt;p&gt;官网下载和安装ruby，linux一般已经集成ruby，请在终端输入ruby -v以检测ruby的安装,如果显示ruby的版本，则安装成功&lt;/p&gt;
+
+    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;n&quot;&gt;ruby&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;h5 id=&quot;安装jekyll&quot;&gt;&lt;strong&gt;安装Jekyll&lt;/strong&gt;&lt;/h5&gt;
+
+    &lt;p&gt;jekyll是一个用ruby编写的web框架，gem是ruby的包管理工具。我们可以使用gem 来安装jekyll。&lt;/p&gt;
+
+    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jekyll&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;h5 id=&quot;生成博客&quot;&gt;&lt;strong&gt;生成博客&lt;/strong&gt;&lt;/h5&gt;
+
+    &lt;p&gt;安装好jekyll之后，我们就可以使用这个gem来生成我们的博客了。&lt;/p&gt;
+
+    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	
+ &lt;span class=&quot;n&quot;&gt;jekyll&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myblog&lt;/span&gt;
+    
+ &lt;span class=&quot;n&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myblog&lt;/span&gt;
+    
+ &lt;span class=&quot;n&quot;&gt;jekyll&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;serve&lt;/span&gt;
+    
+ &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; 打开浏览器 http://localhost:4000&lt;/span&gt;
+	
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;之后，你便可以在本地的访问你的博客了。
+  这里是生成的博客的目录结构，你可以在项目中随意更改你需要更改的东西。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;注册和生成远程仓库&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;购买自己的域名&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;将域名绑定博客&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
 </description>
-        <pubDate>Fri, 09 Mar 2012 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/jekyll/update/2012/03/09/myfirst-blog.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/jekyll/update/2012/03/09/myfirst-blog.html</guid>
+        <pubDate>Tue, 12 Jul 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/07/12/How-to-build-the-blog.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/07/12/How-to-build-the-blog.html</guid>
         
         
-        <category>jekyll</category>
+      </item>
+    
+      <item>
+        <title>这是一篇测试文档</title>
+        <description>&lt;p&gt;这个仅仅是测试我的post能不能给你正常显示。
+而且也会正常显示下面这段代码。&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!c:\python27\python.exe&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Copyright (c) Twisted Matrix Laboratories.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# See LICENSE for details.&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;_preamble&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ImportError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exc_clear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;AttributeError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;c&quot;&gt;# exc_clear() (and the requirement for it) has been removed from Py3&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;abspath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getcwd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()))&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;twisted.scripts.twistd&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;aaaaa&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Fri, 24 Jun 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/06/24/%E8%BF%99%E6%98%AF%E4%B8%80%E7%AF%87%E6%B5%8B%E8%AF%95%E6%96%87%E6%A1%A3.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/06/24/%E8%BF%99%E6%98%AF%E4%B8%80%E7%AF%87%E6%B5%8B%E8%AF%95%E6%96%87%E6%A1%A3.html</guid>
         
-        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Python的I/O操作</title>
+        <description>&lt;h3 id=&quot;主要分为两个部分一个文件操作一个目录操作因为老是记不住所以记在这里方便查看&quot;&gt;主要分为两个部分，一个文件操作，一个目录操作。因为老是记不住，所以记在这里，方便查看。&lt;/h3&gt;
+
+&lt;h4 id=&quot;文件打开的flag含义&quot;&gt;文件打开的Flag含义&lt;/h4&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;标志位&lt;/th&gt;
+      &lt;th&gt;含义&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;r&lt;/td&gt;
+      &lt;td&gt;读&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;w&lt;/td&gt;
+      &lt;td&gt;写&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;a&lt;/td&gt;
+      &lt;td&gt;追加&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;r+&lt;/td&gt;
+      &lt;td&gt;读写&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;w+&lt;/td&gt;
+      &lt;td&gt;读写&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;a+&lt;/td&gt;
+      &lt;td&gt;读写&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;b&lt;/td&gt;
+      &lt;td&gt;以2进制格式进行读写&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;代码示例&quot;&gt;代码示例&lt;/h4&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;test.txt&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;opne&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;r&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;s&quot;&gt;&quot;写文件内容&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;filename_2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;write.txt&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;opne&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filename_2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;w&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wenchao+test&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+
+&lt;span class=&quot;c&quot;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#打开一个文件&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;myfile.txt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a+&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Thu, 23 Jun 2016 16:38:11 +0800</pubDate>
+        <link>http://localhost:4000/2016/06/23/Python-IO%E6%93%8D%E4%BD%9C.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/06/23/Python-IO%E6%93%8D%E4%BD%9C.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Ruby的技能图谱</title>
+        <description>&lt;p&gt;本篇博客是我摘抄自StuQ 程序员技能图谱是由 StuQ（http://www.stuq.org/）发起的一个技术社区开源项目，如要引用，请移步到官网。谢谢。&lt;/p&gt;
+
+&lt;p&gt;说明： 本图谱只捡重点的列举，并非包含全部。文中所列举或没有列举的资源信息都可以在&lt;a href=&quot;https://github.com/markets/awesome-ruby&quot;&gt;awesome-ruby&lt;/a&gt;中找到。&lt;/p&gt;
+
+&lt;h2 id=&quot;ruby应用生态&quot;&gt;Ruby应用生态&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#Web开发&quot;&gt;Web开发&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#自动化测试&quot;&gt;自动化测试&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#安全&quot;&gt;安全&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#云计算基础&quot;&gt;云计算基础&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#嵌入式&quot;&gt;嵌入式&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;web开发&quot;&gt;Web开发&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Rails全栈式Web框架&lt;/li&gt;
+  &lt;li&gt;轻量级Web开发框架（Sinatra，Cuba等）&lt;/li&gt;
+  &lt;li&gt;异步无阻塞Ruby Server框架：Goliath&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;自动化测试&quot;&gt;自动化测试&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;RSpec： BDD测试框架&lt;/li&gt;
+  &lt;li&gt;Cucumber: BDD验收测试框架&lt;/li&gt;
+  &lt;li&gt;Watir: Web应用测试工具&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;安全&quot;&gt;安全&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Metasploit：也许是最好的渗透测试框架&lt;/li&gt;
+  &lt;li&gt;Gitrob: Github敏感信息收集工具&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;云计算基础&quot;&gt;云计算基础&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;chef:   自动化运维工具&lt;/li&gt;
+  &lt;li&gt;puppet: 自动化运维工具&lt;/li&gt;
+  &lt;li&gt;fog: 强大的云服务库&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;嵌入式&quot;&gt;嵌入式&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;mruby:  Ruby的轻量版本，为嵌入式开发而生&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/hone/mruby-cli&quot;&gt;mruby-cli&lt;/a&gt;: 为linux等平台构建本地命令行应用&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;web开发需要学习的主力框架&quot;&gt;Web开发需要学习的主力框架&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Rails: 全栈Web开发框架&lt;/li&gt;
+  &lt;li&gt;Sinatra: 轻量级的Web开发框架&lt;/li&gt;
+  &lt;li&gt;Goliath: 异步非阻塞Ruby Server框架&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;彻底掌握ruby所需要的道与术&quot;&gt;彻底掌握Ruby所需要的「道」与「术」&lt;/h2&gt;
+
+&lt;h3 id=&quot;道&quot;&gt;「道」&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;面向对象基础&lt;/li&gt;
+  &lt;li&gt;深入理解Ruby背后的设计哲学和设计原则&lt;/li&gt;
+  &lt;li&gt;深入理解Ruby对象模型&lt;/li&gt;
+  &lt;li&gt;深入理解block和闭包&lt;/li&gt;
+  &lt;li&gt;深入理解Ruby的作用域&lt;/li&gt;
+  &lt;li&gt;深入理解Ruby的方法查找机制&lt;/li&gt;
+  &lt;li&gt;深入理解Ruby的内存管理（变量和对象内存布局，GC算法和工作机制）&lt;/li&gt;
+  &lt;li&gt;进阶：有余力的可以研究Ruby底层的实现&lt;/li&gt;
+  &lt;li&gt;进阶：通过学习lisp（Elixir亦可），来反观Ruby中block（函数式编程风格），以及元编程的实现（Lisp是暴露AST的宏，Ruby是利用Block和作用域隐式操作AST的宏）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;术&quot;&gt;「术」&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;各种具体类型的处理方法和方式，比如字符串和相关编码、正则表达式、IO等处理&lt;/li&gt;
+  &lt;li&gt;并发与并行：
+    &lt;ul&gt;
+      &lt;li&gt;彻底了解Ruby的GIL及其机制&lt;/li&gt;
+      &lt;li&gt;彻底了解Ruby线程的发展变化及其工作机制（从用户线程到本地线程）&lt;/li&gt;
+      &lt;li&gt;彻底了解Fiber及其应用（重点在Goliath中的应用，终结异步回调地狱）&lt;/li&gt;
+      &lt;li&gt;彻底了解进程相关（重点在各种Ruby多进程应用服务器的工作机制）&lt;/li&gt;
+      &lt;li&gt;尝试了解基于actor模型的Ruby并发库Celluloid。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;社区中各种Gem的实现原理及其用法&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Mon, 30 May 2016 23:40:54 +0800</pubDate>
+        <link>http://localhost:4000/2016/05/30/map-DevLang-Ruby.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/05/30/map-DevLang-Ruby.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>我的To Do List</title>
+        <description>&lt;p&gt;既然这个博客开了，我就把以前学的，还有将要学的东西做一个计划表统计出来，这样便可以解决工作完成之后，没有什么动力和目标去学习。每天都希望能超越自己一点点，时间久了，也许是另一番天地。&lt;/p&gt;
+
+&lt;p&gt;我比较感兴趣的东西太多了，想学习的东西也太多了，只能在工作中和工作完成之后进行学习和充电，Windows和Linux系统原理，C#和Ruby，网络相关，嵌入式，智能家具，还有以前会的Unix系统编程，还有当前很热的VR虚拟现实。&lt;/p&gt;
+
+&lt;p&gt;但是如果什么都会，但是不精通，也没得什么意思。 所以呢，以后就按照这个计划，来充实自己的实力。&lt;/p&gt;
+
+&lt;p&gt;周一：　	对计算机系统原理进行学习，把工作需要的东西进行加深理解&lt;/p&gt;
+
+&lt;p&gt;周二：　	深度去学习网络和Unix相关知识，能解决和分析网络相关的问题&lt;/p&gt;
+
+&lt;p&gt;周三：　	对ruby进行学习，以及能用ruby去做一些自动化测试的工具和开发&lt;/p&gt;
+
+&lt;p&gt;周四：  		去阅读和了解一些目前科技和互联网的趋势，以及学好英语&lt;/p&gt;
+
+&lt;p&gt;周五：  		根据需求，去学习C#相关的知识，因为工作需要，所以要学习&lt;/p&gt;
+
+&lt;p&gt;周六，周日：凭借自己的兴趣，去利用自己会的Linux和Ｃ，去做一些智能家居和自动化控制的东西。以后智能家居和人工智能大有搞头。&lt;/p&gt;
+
+&lt;p&gt;版本控制： Git&lt;/p&gt;
+
+&lt;p&gt;所谓技多不压身，多学学总是好的，梦想一定要有，万一实现了呢？&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 25 Apr 2016 14:04:54 +0800</pubDate>
+        <link>http://localhost:4000/2016/04/25/%E6%88%91%E7%9A%84To-do-list.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/04/25/%E6%88%91%E7%9A%84To-do-list.html</guid>
+        
         
       </item>
     

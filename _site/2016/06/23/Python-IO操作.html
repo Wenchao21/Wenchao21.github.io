@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>About</title>
-  <meta name="description" content="">
+  <title>Python的I/O操作</title>
+  <meta name="description" content="主要分为两个部分，一个文件操作，一个目录操作。因为老是记不住，所以记在这里，方便查看。">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/about/">
+  <link rel="canonical" href="http://localhost:4000/2016/06/23/Python-IO%E6%93%8D%E4%BD%9C.html">
   <link rel="alternate" type="application/rss+xml" title="烟雨任平生的博客" href="http://localhost:4000/feed.xml">
 </head>
 
@@ -54,16 +54,83 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <article class="post">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title">About</h1>
+    <h1 class="post-title" itemprop="name headline">Python的I/O操作</h1>
+    <p class="post-meta"><time datetime="2016-06-23T16:38:11+08:00" itemprop="datePublished">Jun 23, 2016</time></p>
   </header>
 
-  <div class="post-content">
-    <p>海纳百川，有容乃大；壁立千仞，无欲则刚。</p>
+  <div class="post-content" itemprop="articleBody">
+    <h3 id="主要分为两个部分一个文件操作一个目录操作因为老是记不住所以记在这里方便查看">主要分为两个部分，一个文件操作，一个目录操作。因为老是记不住，所以记在这里，方便查看。</h3>
 
-<p>请联系： hewenchao21@163.com</p>
+<h4 id="文件打开的flag含义">文件打开的Flag含义</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>标志位</th>
+      <th>含义</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>r</td>
+      <td>读</td>
+    </tr>
+    <tr>
+      <td>w</td>
+      <td>写</td>
+    </tr>
+    <tr>
+      <td>a</td>
+      <td>追加</td>
+    </tr>
+    <tr>
+      <td>r+</td>
+      <td>读写</td>
+    </tr>
+    <tr>
+      <td>w+</td>
+      <td>读写</td>
+    </tr>
+    <tr>
+      <td>a+</td>
+      <td>读写</td>
+    </tr>
+    <tr>
+      <td>b</td>
+      <td>以2进制格式进行读写</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="代码示例">代码示例</h4>
+<p><br /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># -*- coding: utf-8 -*-</span>
+
+<span class="n">filename</span> <span class="o">=</span> <span class="s">"test.txt"</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">opne</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s">"r"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="s">"写文件内容"</span>
+<span class="n">filename_2</span> <span class="o">=</span> <span class="s">"write.txt"</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">opne</span><span class="p">(</span><span class="n">filename_2</span><span class="p">,</span><span class="s">"w"</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"wenchao+test"</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="c"># -*- coding: utf-8 -*-</span>
+
+<span class="c">#打开一个文件</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"myfile.txt"</span><span class="p">,</span><span class="s">"a+"</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+</code></pre></div></div>
 
   </div>
 

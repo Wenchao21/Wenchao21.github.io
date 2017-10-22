@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>About</title>
-  <meta name="description" content="">
+  <title>解决pycharm中无法正确导入模块问题</title>
+  <meta name="description" content="在创建了一个Scrapy项目之后，我把这个项目放在了一个目录下，变成了：">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/about/">
+  <link rel="canonical" href="http://localhost:4000/2017/02/22/%E8%A7%A3%E5%86%B3%E4%B8%80%E4%B8%AApycharm%E4%B8%AD%E6%97%A0%E6%B3%95%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97%E9%97%AE%E9%A2%98.html">
   <link rel="alternate" type="application/rss+xml" title="烟雨任平生的博客" href="http://localhost:4000/feed.xml">
 </head>
 
@@ -54,16 +54,31 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <article class="post">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title">About</h1>
+    <h1 class="post-title" itemprop="name headline">解决pycharm中无法正确导入模块问题</h1>
+    <p class="post-meta"><time datetime="2017-02-22T00:00:00+08:00" itemprop="datePublished">Feb 22, 2017</time></p>
   </header>
 
-  <div class="post-content">
-    <p>海纳百川，有容乃大；壁立千仞，无欲则刚。</p>
+  <div class="post-content" itemprop="articleBody">
+    <p>在创建了一个Scrapy项目之后，我把这个项目放在了一个目录下，变成了：</p>
 
-<p>请联系： hewenchao21@163.com</p>
+<p>Folder/scrapy_project</p>
+
+<p>当我在scrapy_project的spider的目录中，创建一个spider文件，当在这个spider文件中，尝试使用from scrapy_project import items的时候，IDE找不到 scrapy_project这个package，经过反复的排查，也看了一下scrapy_project中也有__init__.py这个文件啊，为什么就找不到呢？</p>
+
+<p>于是我就打开的python console，在spider目录中去导入，发现没有任何问题，可以正常导入，只是在IDE（pycharm）中找不到这个文件，后来发现是因为pycharm的setting问题：</p>
+
+<ul>
+  <li>如果你用ide直接打开scrapy_project这个目录，记得，是项目的目录，并不是Folder这个目录，这个from scrapy_project import item是可以被找到的。</li>
+  <li>如果你用IDE打开了scrapy_project上一级的目录，Folder这个目录，那么是找不到的，那么如何做呢？答案是你把scrapy_project这个项目目录，make as sources root目录，这样就可以正确查找。</li>
+</ul>
+
+<p>原理：</p>
+
+<p>在你把项目目录设置层sources root， 这个package文件，将会被添加到sys.path的这个路径下，那么当你正确的from xx import xx的时候，from将会从sys.path这个路径中找到这个scrapy_project这个package，那么久可以正常导入。这个问题，一定要对python的import机制进行深入的了解才行，后面我会把这个写的更明白，这次先把IDE中无法import问题解决。</p>
+
 
   </div>
 

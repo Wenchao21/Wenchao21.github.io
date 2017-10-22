@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>About</title>
-  <meta name="description" content="">
+  <title>Ruby的技能图谱</title>
+  <meta name="description" content="本篇博客是我摘抄自StuQ 程序员技能图谱是由 StuQ（http://www.stuq.org/）发起的一个技术社区开源项目，如要引用，请移步到官网。谢谢。">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/about/">
+  <link rel="canonical" href="http://localhost:4000/2016/05/30/map-DevLang-Ruby.html">
   <link rel="alternate" type="application/rss+xml" title="烟雨任平生的博客" href="http://localhost:4000/feed.xml">
 </head>
 
@@ -54,16 +54,106 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <article class="post">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title">About</h1>
+    <h1 class="post-title" itemprop="name headline">Ruby的技能图谱</h1>
+    <p class="post-meta"><time datetime="2016-05-30T23:40:54+08:00" itemprop="datePublished">May 30, 2016</time></p>
   </header>
 
-  <div class="post-content">
-    <p>海纳百川，有容乃大；壁立千仞，无欲则刚。</p>
+  <div class="post-content" itemprop="articleBody">
+    <p>本篇博客是我摘抄自StuQ 程序员技能图谱是由 StuQ（http://www.stuq.org/）发起的一个技术社区开源项目，如要引用，请移步到官网。谢谢。</p>
 
-<p>请联系： hewenchao21@163.com</p>
+<p>说明： 本图谱只捡重点的列举，并非包含全部。文中所列举或没有列举的资源信息都可以在<a href="https://github.com/markets/awesome-ruby">awesome-ruby</a>中找到。</p>
+
+<h2 id="ruby应用生态">Ruby应用生态</h2>
+
+<ul>
+  <li><a href="#Web开发">Web开发</a></li>
+  <li><a href="#自动化测试">自动化测试</a></li>
+  <li><a href="#安全">安全</a></li>
+  <li><a href="#云计算基础">云计算基础</a></li>
+  <li><a href="#嵌入式">嵌入式</a></li>
+</ul>
+
+<h3 id="web开发">Web开发</h3>
+
+<ul>
+  <li>Rails全栈式Web框架</li>
+  <li>轻量级Web开发框架（Sinatra，Cuba等）</li>
+  <li>异步无阻塞Ruby Server框架：Goliath</li>
+</ul>
+
+<h3 id="自动化测试">自动化测试</h3>
+
+<ul>
+  <li>RSpec： BDD测试框架</li>
+  <li>Cucumber: BDD验收测试框架</li>
+  <li>Watir: Web应用测试工具</li>
+</ul>
+
+<h3 id="安全">安全</h3>
+
+<ul>
+  <li>Metasploit：也许是最好的渗透测试框架</li>
+  <li>Gitrob: Github敏感信息收集工具</li>
+</ul>
+
+<h3 id="云计算基础">云计算基础</h3>
+
+<ul>
+  <li>chef:   自动化运维工具</li>
+  <li>puppet: 自动化运维工具</li>
+  <li>fog: 强大的云服务库</li>
+</ul>
+
+<h3 id="嵌入式">嵌入式</h3>
+
+<ul>
+  <li>mruby:  Ruby的轻量版本，为嵌入式开发而生</li>
+  <li><a href="https://github.com/hone/mruby-cli">mruby-cli</a>: 为linux等平台构建本地命令行应用</li>
+</ul>
+
+<h2 id="web开发需要学习的主力框架">Web开发需要学习的主力框架</h2>
+
+<ul>
+  <li>Rails: 全栈Web开发框架</li>
+  <li>Sinatra: 轻量级的Web开发框架</li>
+  <li>Goliath: 异步非阻塞Ruby Server框架</li>
+</ul>
+
+<h2 id="彻底掌握ruby所需要的道与术">彻底掌握Ruby所需要的「道」与「术」</h2>
+
+<h3 id="道">「道」</h3>
+
+<ul>
+  <li>面向对象基础</li>
+  <li>深入理解Ruby背后的设计哲学和设计原则</li>
+  <li>深入理解Ruby对象模型</li>
+  <li>深入理解block和闭包</li>
+  <li>深入理解Ruby的作用域</li>
+  <li>深入理解Ruby的方法查找机制</li>
+  <li>深入理解Ruby的内存管理（变量和对象内存布局，GC算法和工作机制）</li>
+  <li>进阶：有余力的可以研究Ruby底层的实现</li>
+  <li>进阶：通过学习lisp（Elixir亦可），来反观Ruby中block（函数式编程风格），以及元编程的实现（Lisp是暴露AST的宏，Ruby是利用Block和作用域隐式操作AST的宏）</li>
+</ul>
+
+<h3 id="术">「术」</h3>
+
+<ul>
+  <li>各种具体类型的处理方法和方式，比如字符串和相关编码、正则表达式、IO等处理</li>
+  <li>并发与并行：
+    <ul>
+      <li>彻底了解Ruby的GIL及其机制</li>
+      <li>彻底了解Ruby线程的发展变化及其工作机制（从用户线程到本地线程）</li>
+      <li>彻底了解Fiber及其应用（重点在Goliath中的应用，终结异步回调地狱）</li>
+      <li>彻底了解进程相关（重点在各种Ruby多进程应用服务器的工作机制）</li>
+      <li>尝试了解基于actor模型的Ruby并发库Celluloid。</li>
+    </ul>
+  </li>
+  <li>社区中各种Gem的实现原理及其用法</li>
+</ul>
+
 
   </div>
 

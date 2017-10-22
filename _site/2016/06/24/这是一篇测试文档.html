@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>About</title>
-  <meta name="description" content="">
+  <title>这是一篇测试文档</title>
+  <meta name="description" content="这个仅仅是测试我的post能不能给你正常显示。而且也会正常显示下面这段代码。">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/about/">
+  <link rel="canonical" href="http://localhost:4000/2016/06/24/%E8%BF%99%E6%98%AF%E4%B8%80%E7%AF%87%E6%B5%8B%E8%AF%95%E6%96%87%E6%A1%A3.html">
   <link rel="alternate" type="application/rss+xml" title="烟雨任平生的博客" href="http://localhost:4000/feed.xml">
 </head>
 
@@ -54,16 +54,40 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <article class="post">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title">About</h1>
+    <h1 class="post-title" itemprop="name headline">这是一篇测试文档</h1>
+    <p class="post-meta"><time datetime="2016-06-24T00:00:00+08:00" itemprop="datePublished">Jun 24, 2016</time></p>
   </header>
 
-  <div class="post-content">
-    <p>海纳百川，有容乃大；壁立千仞，无欲则刚。</p>
+  <div class="post-content" itemprop="articleBody">
+    <p>这个仅仅是测试我的post能不能给你正常显示。
+而且也会正常显示下面这段代码。</p>
 
-<p>请联系： hewenchao21@163.com</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!c:\python27\python.exe</span>
+<span class="c"># Copyright (c) Twisted Matrix Laboratories.</span>
+<span class="c"># See LICENSE for details.</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="p">,</span> <span class="n">sys</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">_preamble</span>
+<span class="k">except</span> <span class="nb">ImportError</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exc_clear</span><span class="p">()</span>
+    <span class="k">except</span> <span class="nb">AttributeError</span><span class="p">:</span>
+        <span class="c"># exc_clear() (and the requirement for it) has been removed from Py3</span>
+        <span class="k">pass</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))</span>
+
+<span class="kn">from</span> <span class="nn">twisted.scripts.twistd</span> <span class="kn">import</span> <span class="n">run</span>
+<span class="n">run</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">puts</span> <span class="s2">"aaaaa"</span>
+</code></pre></div></div>
+
 
   </div>
 
