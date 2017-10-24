@@ -5,8 +5,8 @@
     <description></description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 24 Oct 2017 22:54:37 +0800</pubDate>
-    <lastBuildDate>Tue, 24 Oct 2017 22:54:37 +0800</lastBuildDate>
+    <pubDate>Tue, 24 Oct 2017 23:13:27 +0800</pubDate>
+    <lastBuildDate>Tue, 24 Oct 2017 23:13:27 +0800</lastBuildDate>
     <generator>Jekyll v3.1.3</generator>
     
       <item>
@@ -15,26 +15,28 @@
 
 &lt;p&gt;此项目只要分为两大块:&lt;/p&gt;
 
-&lt;center&gt;song_lrc_analyze
-
----
+&lt;hr /&gt;
 
 &lt;center&gt;数据的爬取
 
 data_download: 此目录为一个以Scrapy框架结构的爬虫,主要从网站上自动爬取古诗文的内容
 
----
+
+----
+
 
 &lt;center&gt;数据的分析
 
 data_analyze: 此目录为使用NLTK和jieba分词库进行数据的筛选和清洗,以及分词和标注,还有数据展示
 
----
+----
+
+
 
 如果链接打不开，请直接访问我的github，谢谢。
 
 ![](https://github.com/Wenchao21/song_lrc_analyze)
-&lt;/center&gt;&lt;/center&gt;&lt;/center&gt;
+&lt;/center&gt;&lt;/center&gt;
 </description>
         <pubDate>Tue, 24 Oct 2017 00:00:00 +0800</pubDate>
         <link>http://yourdomain.com/2017/10/24/%E7%94%A8%E6%95%B0%E6%8D%AE%E8%AE%B2%E6%95%85%E4%BA%8B-%E5%88%86%E6%9E%90%E4%B8%AD%E5%9B%BD%E7%9A%84%E5%8F%A4%E8%AF%97%E8%AF%8D.html</link>
