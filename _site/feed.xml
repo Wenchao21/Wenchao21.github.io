@@ -5,9 +5,43 @@
     <description></description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 24 Oct 2017 22:10:32 +0800</pubDate>
-    <lastBuildDate>Tue, 24 Oct 2017 22:10:32 +0800</lastBuildDate>
+    <pubDate>Tue, 24 Oct 2017 22:54:37 +0800</pubDate>
+    <lastBuildDate>Tue, 24 Oct 2017 22:54:37 +0800</lastBuildDate>
     <generator>Jekyll v3.1.3</generator>
+    
+      <item>
+        <title>用数据讲故事-分析中国的古诗词</title>
+        <description>&lt;p&gt;爬取中国古诗文，进行分析，看看古诗文中到底写了什么东西&lt;/p&gt;
+
+&lt;p&gt;此项目只要分为两大块:&lt;/p&gt;
+
+&lt;center&gt;song_lrc_analyze
+
+---
+
+&lt;center&gt;数据的爬取
+
+data_download: 此目录为一个以Scrapy框架结构的爬虫,主要从网站上自动爬取古诗文的内容
+
+---
+
+&lt;center&gt;数据的分析
+
+data_analyze: 此目录为使用NLTK和jieba分词库进行数据的筛选和清洗,以及分词和标注,还有数据展示
+
+---
+
+如果链接打不开，请直接访问我的github，谢谢。
+
+![](https://github.com/Wenchao21/song_lrc_analyze)
+&lt;/center&gt;&lt;/center&gt;&lt;/center&gt;
+</description>
+        <pubDate>Tue, 24 Oct 2017 00:00:00 +0800</pubDate>
+        <link>http://yourdomain.com/2017/10/24/%E7%94%A8%E6%95%B0%E6%8D%AE%E8%AE%B2%E6%95%85%E4%BA%8B-%E5%88%86%E6%9E%90%E4%B8%AD%E5%9B%BD%E7%9A%84%E5%8F%A4%E8%AF%97%E8%AF%8D.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2017/10/24/%E7%94%A8%E6%95%B0%E6%8D%AE%E8%AE%B2%E6%95%85%E4%BA%8B-%E5%88%86%E6%9E%90%E4%B8%AD%E5%9B%BD%E7%9A%84%E5%8F%A4%E8%AF%97%E8%AF%8D.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Python中的super</title>
@@ -608,38 +642,6 @@
         <pubDate>Mon, 30 May 2016 23:40:54 +0800</pubDate>
         <link>http://yourdomain.com/2016/05/30/map-DevLang-Ruby.html</link>
         <guid isPermaLink="true">http://yourdomain.com/2016/05/30/map-DevLang-Ruby.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>我的To Do List</title>
-        <description>&lt;p&gt;既然这个博客开了，我就把以前学的，还有将要学的东西做一个计划表统计出来，这样便可以解决工作完成之后，没有什么动力和目标去学习。每天都希望能超越自己一点点，时间久了，也许是另一番天地。&lt;/p&gt;
-
-&lt;p&gt;我比较感兴趣的东西太多了，想学习的东西也太多了，只能在工作中和工作完成之后进行学习和充电，Windows和Linux系统原理，C#和Ruby，网络相关，嵌入式，智能家具，还有以前会的Unix系统编程，还有当前很热的VR虚拟现实。&lt;/p&gt;
-
-&lt;p&gt;但是如果什么都会，但是不精通，也没得什么意思。 所以呢，以后就按照这个计划，来充实自己的实力。&lt;/p&gt;
-
-&lt;p&gt;周一：　	对计算机系统原理进行学习，把工作需要的东西进行加深理解&lt;/p&gt;
-
-&lt;p&gt;周二：　	深度去学习网络和Unix相关知识，能解决和分析网络相关的问题&lt;/p&gt;
-
-&lt;p&gt;周三：　	对ruby进行学习，以及能用ruby去做一些自动化测试的工具和开发&lt;/p&gt;
-
-&lt;p&gt;周四：  		去阅读和了解一些目前科技和互联网的趋势，以及学好英语&lt;/p&gt;
-
-&lt;p&gt;周五：  		根据需求，去学习C#相关的知识，因为工作需要，所以要学习&lt;/p&gt;
-
-&lt;p&gt;周六，周日：凭借自己的兴趣，去利用自己会的Linux和Ｃ，去做一些智能家居和自动化控制的东西。以后智能家居和人工智能大有搞头。&lt;/p&gt;
-
-&lt;p&gt;版本控制： Git&lt;/p&gt;
-
-&lt;p&gt;所谓技多不压身，多学学总是好的，梦想一定要有，万一实现了呢？&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 25 Apr 2016 14:04:54 +0800</pubDate>
-        <link>http://yourdomain.com/2016/04/25/%E6%88%91%E7%9A%84To-do-list.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2016/04/25/%E6%88%91%E7%9A%84To-do-list.html</guid>
         
         
       </item>
