@@ -10,8 +10,8 @@
   <meta name="description" content="主要分为两个部分，一个文件操作，一个目录操作。因为老是记不住，所以记在这里，方便查看。">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/2016/06/23/Python-IO%E6%93%8D%E4%BD%9C.html">
-  <link rel="alternate" type="application/rss+xml" title="烟雨任平生的博客" href="http://localhost:4000/feed.xml">
+  <link rel="canonical" href="http://yourdomain.com/2016/06/23/Python-IO%E6%93%8D%E4%BD%9C.html">
+  <link rel="alternate" type="application/rss+xml" title="烟雨任平生的博客" href="http://yourdomain.com/feed.xml">
 </head>
 
 
@@ -62,9 +62,9 @@
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <h3 id="主要分为两个部分一个文件操作一个目录操作因为老是记不住所以记在这里方便查看">主要分为两个部分，一个文件操作，一个目录操作。因为老是记不住，所以记在这里，方便查看。</h3>
+    <h3 id="section">主要分为两个部分，一个文件操作，一个目录操作。因为老是记不住，所以记在这里，方便查看。</h3>
 
-<h4 id="文件打开的flag含义">文件打开的Flag含义</h4>
+<h4 id="flag">文件打开的Flag含义</h4>
 
 <table>
   <thead>
@@ -105,10 +105,10 @@
   </tbody>
 </table>
 
-<h4 id="代码示例">代码示例</h4>
+<h4 id="section-1">代码示例</h4>
 <p><br /></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># -*- coding: utf-8 -*-</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># -*- coding: utf-8 -*-</span>
 
 <span class="n">filename</span> <span class="o">=</span> <span class="s">"test.txt"</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">opne</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s">"r"</span><span class="p">)</span>
@@ -130,7 +130,8 @@
 <span class="k">while</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
     <span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
-</code></pre></div></div>
+</code></pre>
+</div>
 
   </div>
 

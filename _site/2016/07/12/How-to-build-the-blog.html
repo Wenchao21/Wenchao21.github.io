@@ -10,8 +10,8 @@
   <meta name="description" content="此处的资料，全为自己平时的自学，以及在我们几个好朋友群里面讨论的东西，有正确的，有不正确的，如果有什么高见，请email给我：hewenchao21@163.com。海纳百川，有容乃大；壁立千仞，无欲则刚。">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/2016/07/12/How-to-build-the-blog.html">
-  <link rel="alternate" type="application/rss+xml" title="烟雨任平生的博客" href="http://localhost:4000/feed.xml">
+  <link rel="canonical" href="http://yourdomain.com/2016/07/12/How-to-build-the-blog.html">
+  <link rel="alternate" type="application/rss+xml" title="烟雨任平生的博客" href="http://yourdomain.com/feed.xml">
 </head>
 
 
@@ -102,34 +102,37 @@
   <li>
     <p><strong>生成本地工程</strong></p>
 
-    <h5 id="安装ruby"><strong>安装ruby</strong></h5>
+    <h5 id="ruby"><strong>安装ruby</strong></h5>
 
     <p>官网下载和安装ruby，linux一般已经集成ruby，请在终端输入ruby -v以检测ruby的安装,如果显示ruby的版本，则安装成功</p>
 
-    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">ruby</span> <span class="o">-</span><span class="n">v</span>
-</code></pre></div>    </div>
+    <p><code class="highlighter-rouge">ruby	
+ ruby -v
+</code></p>
 
-    <h5 id="安装jekyll"><strong>安装Jekyll</strong></h5>
+    <h5 id="jekyll"><strong>安装Jekyll</strong></h5>
 
     <p>jekyll是一个用ruby编写的web框架，gem是ruby的包管理工具。我们可以使用gem 来安装jekyll。</p>
 
-    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="n">install</span> <span class="n">jekyll</span>
-</code></pre></div>    </div>
+    <div class="highlighter-rouge"><pre class="highlight"><code><span class="n">gem</span> <span class="n">install</span> <span class="n">jekyll</span>
+</code></pre>
+    </div>
 
-    <h5 id="生成博客"><strong>生成博客</strong></h5>
+    <h5 id="section"><strong>生成博客</strong></h5>
 
     <p>安装好jekyll之后，我们就可以使用这个gem来生成我们的博客了。</p>
 
-    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	
- <span class="n">jekyll</span> <span class="n">new</span> <span class="n">myblog</span>
-    
- <span class="n">cd</span> <span class="n">myblog</span>
-    
- <span class="n">jekyll</span> <span class="n">serve</span>
-    
- <span class="c1"># =&gt; 打开浏览器 http://localhost:4000</span>
-	
-</code></pre></div>    </div>
+    <p>```ruby</p>
+
+    <p>jekyll new myblog</p>
+
+    <p>cd myblog</p>
+
+    <p>jekyll serve</p>
+
+    <p># =&gt; 打开浏览器 http://localhost:4000</p>
+
+    <p>```</p>
 
     <p>之后，你便可以在本地的访问你的博客了。
   这里是生成的博客的目录结构，你可以在项目中随意更改你需要更改的东西。</p>

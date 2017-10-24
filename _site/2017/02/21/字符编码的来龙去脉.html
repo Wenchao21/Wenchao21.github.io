@@ -10,8 +10,8 @@
   <meta name="description" content="当时做了一个用requests去爬取dotamax上的英雄使用次数和胜率，出现了一个爬取下来的数据，如果是中文的话，在windows下的cmd中查看是乱码问题，我敢肯定，这是字符编码问题，为了彻底搞明白这个字符集和字符编码，我就在这里进行一个总结，先讲一个故事，这样理解更深刻。">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/2017/02/21/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89.html">
-  <link rel="alternate" type="application/rss+xml" title="烟雨任平生的博客" href="http://localhost:4000/feed.xml">
+  <link rel="canonical" href="http://yourdomain.com/2017/02/21/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89.html">
+  <link rel="alternate" type="application/rss+xml" title="烟雨任平生的博客" href="http://yourdomain.com/feed.xml">
 </head>
 
 
@@ -86,7 +86,7 @@
 
 <p>好的，直接看代码：</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#coding = utf-8</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#coding = utf-8</span>
 
 <span class="kn">import</span> <span class="nn">requests</span>
 
@@ -95,7 +95,8 @@
 <span class="k">print</span> <span class="n">res</span><span class="o">.</span><span class="n">encoding</span>
 <span class="k">print</span> <span class="n">res</span><span class="o">.</span><span class="n">content</span>
 
-</code></pre></div></div>
+</code></pre>
+</div>
 
 <p>那么，下面来看我遇到的问题，我在爬取了dotamax上的信息之后，虽然我在dota.py这个文件中生命code的编码是UTF-8，但是这个是code的编码，就是你的代码编码，那么我如果在python自带的python gui里面运行时什么结果呢？中文是可以正常显示的，那么我如果用windows下的cmd执行的话，会是什么结果呢？结果就是乱码。</p>
 

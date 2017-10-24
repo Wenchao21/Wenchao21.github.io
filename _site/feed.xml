@@ -3,15 +3,15 @@
   <channel>
     <title>烟雨任平生的博客</title>
     <description></description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 22 Oct 2017 16:00:36 +0800</pubDate>
-    <lastBuildDate>Sun, 22 Oct 2017 16:00:36 +0800</lastBuildDate>
-    <generator>Jekyll v3.6.2</generator>
+    <link>http://yourdomain.com/</link>
+    <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 24 Oct 2017 22:10:32 +0800</pubDate>
+    <lastBuildDate>Tue, 24 Oct 2017 22:10:32 +0800</lastBuildDate>
+    <generator>Jekyll v3.1.3</generator>
     
       <item>
         <title>Python中的super</title>
-        <description>&lt;h4 id=&quot;反正一句话-不要一说到-super-就想到父类super-指的是-mro-中的下一个类&quot;&gt;&lt;strong&gt;反正一句话： 不要一说到 super 就想到父类！super 指的是 MRO 中的下一个类！&lt;/strong&gt;&lt;/h4&gt;
+        <description>&lt;h4 id=&quot;super-super--mro-&quot;&gt;&lt;strong&gt;反正一句话： 不要一说到 super 就想到父类！super 指的是 MRO 中的下一个类！&lt;/strong&gt;&lt;/h4&gt;
 
 &lt;p&gt;首先必须要理解MRO&lt;/p&gt;
 
@@ -21,7 +21,7 @@
 
 &lt;p&gt;最后在做一下实践，才能理解super&lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 &lt;span class=&quot;c&quot;&gt;#先说一点：如果是我写，坚决不用super了，我更想用类名加方法名去调用，这样我认为是最直接的，知道哪个类里面的方法。&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;#切记一个人的代码不要两者混用，到时候自己都搞不清楚。&lt;/span&gt;
@@ -79,23 +79,24 @@
 &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
  
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'__main__'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;__main__&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__mro__&lt;/span&gt;
 
 
-&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;gt;, &amp;lt;class '&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;gt;, &amp;lt;class '&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; &amp;lt;class '&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;gt;, &amp;lt;class '&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;gt;, &amp;lt;class '&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; &amp;lt;type '&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;&amp;gt;, &amp;lt;class &#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;&amp;gt;, &amp;lt;class &#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;&amp;gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; &amp;lt;class &#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;&amp;gt;, &amp;lt;class &#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;&amp;gt;, &amp;lt;class &#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;&amp;gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; &amp;lt;type &#39;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;&amp;gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
 
 
 
 
 
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 </description>
         <pubDate>Thu, 02 Mar 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/03/02/Python-%E4%B8%AD%E7%9A%84super.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/03/02/Python-%E4%B8%AD%E7%9A%84super.html</guid>
+        <link>http://yourdomain.com/2017/03/02/Python-%E4%B8%AD%E7%9A%84super.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2017/03/02/Python-%E4%B8%AD%E7%9A%84super.html</guid>
         
         
       </item>
@@ -121,8 +122,8 @@
 
 </description>
         <pubDate>Wed, 22 Feb 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/02/22/%E8%A7%A3%E5%86%B3%E4%B8%80%E4%B8%AApycharm%E4%B8%AD%E6%97%A0%E6%B3%95%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97%E9%97%AE%E9%A2%98.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/02/22/%E8%A7%A3%E5%86%B3%E4%B8%80%E4%B8%AApycharm%E4%B8%AD%E6%97%A0%E6%B3%95%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97%E9%97%AE%E9%A2%98.html</guid>
+        <link>http://yourdomain.com/2017/02/22/%E8%A7%A3%E5%86%B3%E4%B8%80%E4%B8%AApycharm%E4%B8%AD%E6%97%A0%E6%B3%95%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97%E9%97%AE%E9%A2%98.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2017/02/22/%E8%A7%A3%E5%86%B3%E4%B8%80%E4%B8%AApycharm%E4%B8%AD%E6%97%A0%E6%B3%95%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97%E9%97%AE%E9%A2%98.html</guid>
         
         
       </item>
@@ -153,7 +154,7 @@
 
 &lt;p&gt;好的，直接看代码：&lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#coding = utf-8&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#coding = utf-8&lt;/span&gt;
 
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;requests&lt;/span&gt;
 
@@ -162,7 +163,8 @@
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encoding&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;那么，下面来看我遇到的问题，我在爬取了dotamax上的信息之后，虽然我在dota.py这个文件中生命code的编码是UTF-8，但是这个是code的编码，就是你的代码编码，那么我如果在python自带的python gui里面运行时什么结果呢？中文是可以正常显示的，那么我如果用windows下的cmd执行的话，会是什么结果呢？结果就是乱码。&lt;/p&gt;
 
@@ -180,8 +182,8 @@
 &lt;p&gt;转载请说明出处，原创。嘿嘿&lt;/p&gt;
 </description>
         <pubDate>Tue, 21 Feb 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/02/21/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/02/21/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89.html</guid>
+        <link>http://yourdomain.com/2017/02/21/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2017/02/21/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89.html</guid>
         
         
       </item>
@@ -207,8 +209,8 @@
 &lt;p&gt;我始终相信，编程语言只是工具，分析方法和思路，才是解决问题的关键，所以我会在每一篇文章前面，都会对思路和情景，进行总结和分析。&lt;/p&gt;
 </description>
         <pubDate>Tue, 21 Feb 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/02/21/%E5%85%B3%E4%BA%8E%E5%90%8E%E9%9D%A2%E7%9A%84%E5%8D%9A%E6%96%87.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/02/21/%E5%85%B3%E4%BA%8E%E5%90%8E%E9%9D%A2%E7%9A%84%E5%8D%9A%E6%96%87.html</guid>
+        <link>http://yourdomain.com/2017/02/21/%E5%85%B3%E4%BA%8E%E5%90%8E%E9%9D%A2%E7%9A%84%E5%8D%9A%E6%96%87.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2017/02/21/%E5%85%B3%E4%BA%8E%E5%90%8E%E9%9D%A2%E7%9A%84%E5%8D%9A%E6%96%87.html</guid>
         
         
       </item>
@@ -225,7 +227,7 @@
 
 &lt;p&gt;4）我把print看做静态方法，不知道可靠不？&lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 &lt;span class=&quot;c&quot;&gt;# coding=utf-8&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# 关于python里面的方法,有必要做一下系统的整理&lt;/span&gt;
 
@@ -234,10 +236,10 @@
 &lt;span class=&quot;c&quot;&gt;# 请看如下代码&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ClassTest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;val1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'this is val1'&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;val1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;this is val1&#39;&lt;/span&gt;
 
     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'this is a instance val2'&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;this is a instance val2&#39;&lt;/span&gt;
         &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cc&lt;/span&gt;
         &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
 
@@ -249,11 +251,11 @@
 
     &lt;span class=&quot;nd&quot;&gt;@staticmethod&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;staticfunc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'this is a static method!'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argv2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argv2&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;this is a static method!&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argv2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argv2&lt;/span&gt;
 
     &lt;span class=&quot;nd&quot;&gt;@classmethod&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;classmethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'this is a class method'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;this is a class method&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val1&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# 实例化一个变量做测试,并且传入一个字符串,作为变量&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# 这个变量被__init__()方法调用,用来初始化这个对象&lt;/span&gt;
@@ -284,11 +286,12 @@
 &lt;span class=&quot;c&quot;&gt;# 为了不让两种语言在我脑子中乱掉,尽量采用相似的记忆方法。&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# 如果你没有在python里面这些名词的叫法,请参考下ruby,谢谢。不正确的,请指正。&lt;/span&gt;
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 </description>
         <pubDate>Mon, 19 Sep 2016 06:53:54 +0800</pubDate>
-        <link>http://localhost:4000/2016/09/19/Python%E7%B1%BB%E4%B8%AD%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/09/19/Python%E7%B1%BB%E4%B8%AD%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3.html</guid>
+        <link>http://yourdomain.com/2016/09/19/Python%E7%B1%BB%E4%B8%AD%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2016/09/19/Python%E7%B1%BB%E4%B8%AD%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3.html</guid>
         
         
       </item>
@@ -335,34 +338,37 @@
   &lt;li&gt;
     &lt;p&gt;&lt;strong&gt;生成本地工程&lt;/strong&gt;&lt;/p&gt;
 
-    &lt;h5 id=&quot;安装ruby&quot;&gt;&lt;strong&gt;安装ruby&lt;/strong&gt;&lt;/h5&gt;
+    &lt;h5 id=&quot;ruby&quot;&gt;&lt;strong&gt;安装ruby&lt;/strong&gt;&lt;/h5&gt;
 
     &lt;p&gt;官网下载和安装ruby，linux一般已经集成ruby，请在终端输入ruby -v以检测ruby的安装,如果显示ruby的版本，则安装成功&lt;/p&gt;
 
-    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;n&quot;&gt;ruby&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ruby	
+ ruby -v
+&lt;/code&gt;&lt;/p&gt;
 
-    &lt;h5 id=&quot;安装jekyll&quot;&gt;&lt;strong&gt;安装Jekyll&lt;/strong&gt;&lt;/h5&gt;
+    &lt;h5 id=&quot;jekyll&quot;&gt;&lt;strong&gt;安装Jekyll&lt;/strong&gt;&lt;/h5&gt;
 
     &lt;p&gt;jekyll是一个用ruby编写的web框架，gem是ruby的包管理工具。我们可以使用gem 来安装jekyll。&lt;/p&gt;
 
-    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jekyll&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jekyll&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
 
-    &lt;h5 id=&quot;生成博客&quot;&gt;&lt;strong&gt;生成博客&lt;/strong&gt;&lt;/h5&gt;
+    &lt;h5 id=&quot;section&quot;&gt;&lt;strong&gt;生成博客&lt;/strong&gt;&lt;/h5&gt;
 
     &lt;p&gt;安装好jekyll之后，我们就可以使用这个gem来生成我们的博客了。&lt;/p&gt;
 
-    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	
- &lt;span class=&quot;n&quot;&gt;jekyll&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myblog&lt;/span&gt;
-    
- &lt;span class=&quot;n&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myblog&lt;/span&gt;
-    
- &lt;span class=&quot;n&quot;&gt;jekyll&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;serve&lt;/span&gt;
-    
- &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; 打开浏览器 http://localhost:4000&lt;/span&gt;
-	
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;```ruby&lt;/p&gt;
+
+    &lt;p&gt;jekyll new myblog&lt;/p&gt;
+
+    &lt;p&gt;cd myblog&lt;/p&gt;
+
+    &lt;p&gt;jekyll serve&lt;/p&gt;
+
+    &lt;p&gt;# =&amp;gt; 打开浏览器 http://localhost:4000&lt;/p&gt;
+
+    &lt;p&gt;```&lt;/p&gt;
 
     &lt;p&gt;之后，你便可以在本地的访问你的博客了。
   这里是生成的博客的目录结构，你可以在项目中随意更改你需要更改的东西。&lt;/p&gt;
@@ -380,8 +386,8 @@
 
 </description>
         <pubDate>Tue, 12 Jul 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/07/12/How-to-build-the-blog.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/07/12/How-to-build-the-blog.html</guid>
+        <link>http://yourdomain.com/2016/07/12/How-to-build-the-blog.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2016/07/12/How-to-build-the-blog.html</guid>
         
         
       </item>
@@ -391,10 +397,10 @@
         <description>&lt;p&gt;这个仅仅是测试我的post能不能给你正常显示。
 而且也会正常显示下面这段代码。&lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!c:\python27\python.exe&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!c:\python27\python.exe&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# Copyright (c) Twisted Matrix Laboratories.&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# See LICENSE for details.&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;_preamble&lt;/span&gt;
@@ -409,24 +415,26 @@
 
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;twisted.scripts.twistd&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;aaaaa&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;aaaaa&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
         <pubDate>Fri, 24 Jun 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/06/24/%E8%BF%99%E6%98%AF%E4%B8%80%E7%AF%87%E6%B5%8B%E8%AF%95%E6%96%87%E6%A1%A3.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/06/24/%E8%BF%99%E6%98%AF%E4%B8%80%E7%AF%87%E6%B5%8B%E8%AF%95%E6%96%87%E6%A1%A3.html</guid>
+        <link>http://yourdomain.com/2016/06/24/%E8%BF%99%E6%98%AF%E4%B8%80%E7%AF%87%E6%B5%8B%E8%AF%95%E6%96%87%E6%A1%A3.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2016/06/24/%E8%BF%99%E6%98%AF%E4%B8%80%E7%AF%87%E6%B5%8B%E8%AF%95%E6%96%87%E6%A1%A3.html</guid>
         
         
       </item>
     
       <item>
         <title>Python的I/O操作</title>
-        <description>&lt;h3 id=&quot;主要分为两个部分一个文件操作一个目录操作因为老是记不住所以记在这里方便查看&quot;&gt;主要分为两个部分，一个文件操作，一个目录操作。因为老是记不住，所以记在这里，方便查看。&lt;/h3&gt;
+        <description>&lt;h3 id=&quot;section&quot;&gt;主要分为两个部分，一个文件操作，一个目录操作。因为老是记不住，所以记在这里，方便查看。&lt;/h3&gt;
 
-&lt;h4 id=&quot;文件打开的flag含义&quot;&gt;文件打开的Flag含义&lt;/h4&gt;
+&lt;h4 id=&quot;flag&quot;&gt;文件打开的Flag含义&lt;/h4&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -467,10 +475,10 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h4 id=&quot;代码示例&quot;&gt;代码示例&lt;/h4&gt;
+&lt;h4 id=&quot;section-1&quot;&gt;代码示例&lt;/h4&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 
 &lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;test.txt&quot;&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;opne&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;r&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -492,11 +500,12 @@
 &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 </description>
         <pubDate>Thu, 23 Jun 2016 16:38:11 +0800</pubDate>
-        <link>http://localhost:4000/2016/06/23/Python-IO%E6%93%8D%E4%BD%9C.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/06/23/Python-IO%E6%93%8D%E4%BD%9C.html</guid>
+        <link>http://yourdomain.com/2016/06/23/Python-IO%E6%93%8D%E4%BD%9C.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2016/06/23/Python-IO%E6%93%8D%E4%BD%9C.html</guid>
         
         
       </item>
@@ -507,7 +516,7 @@
 
 &lt;p&gt;说明： 本图谱只捡重点的列举，并非包含全部。文中所列举或没有列举的资源信息都可以在&lt;a href=&quot;https://github.com/markets/awesome-ruby&quot;&gt;awesome-ruby&lt;/a&gt;中找到。&lt;/p&gt;
 
-&lt;h2 id=&quot;ruby应用生态&quot;&gt;Ruby应用生态&lt;/h2&gt;
+&lt;h2 id=&quot;ruby&quot;&gt;Ruby应用生态&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;#Web开发&quot;&gt;Web开发&lt;/a&gt;&lt;/li&gt;
@@ -517,7 +526,7 @@
   &lt;li&gt;&lt;a href=&quot;#嵌入式&quot;&gt;嵌入式&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;web开发&quot;&gt;Web开发&lt;/h3&gt;
+&lt;h3 id=&quot;web&quot;&gt;Web开发&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Rails全栈式Web框架&lt;/li&gt;
@@ -525,7 +534,7 @@
   &lt;li&gt;异步无阻塞Ruby Server框架：Goliath&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;自动化测试&quot;&gt;自动化测试&lt;/h3&gt;
+&lt;h3 id=&quot;section&quot;&gt;自动化测试&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;RSpec： BDD测试框架&lt;/li&gt;
@@ -533,14 +542,14 @@
   &lt;li&gt;Watir: Web应用测试工具&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;安全&quot;&gt;安全&lt;/h3&gt;
+&lt;h3 id=&quot;section-1&quot;&gt;安全&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Metasploit：也许是最好的渗透测试框架&lt;/li&gt;
   &lt;li&gt;Gitrob: Github敏感信息收集工具&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;云计算基础&quot;&gt;云计算基础&lt;/h3&gt;
+&lt;h3 id=&quot;section-2&quot;&gt;云计算基础&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;chef:   自动化运维工具&lt;/li&gt;
@@ -548,14 +557,14 @@
   &lt;li&gt;fog: 强大的云服务库&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;嵌入式&quot;&gt;嵌入式&lt;/h3&gt;
+&lt;h3 id=&quot;section-3&quot;&gt;嵌入式&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;mruby:  Ruby的轻量版本，为嵌入式开发而生&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/hone/mruby-cli&quot;&gt;mruby-cli&lt;/a&gt;: 为linux等平台构建本地命令行应用&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;web开发需要学习的主力框架&quot;&gt;Web开发需要学习的主力框架&lt;/h2&gt;
+&lt;h2 id=&quot;web-1&quot;&gt;Web开发需要学习的主力框架&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Rails: 全栈Web开发框架&lt;/li&gt;
@@ -563,9 +572,9 @@
   &lt;li&gt;Goliath: 异步非阻塞Ruby Server框架&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;彻底掌握ruby所需要的道与术&quot;&gt;彻底掌握Ruby所需要的「道」与「术」&lt;/h2&gt;
+&lt;h2 id=&quot;ruby-1&quot;&gt;彻底掌握Ruby所需要的「道」与「术」&lt;/h2&gt;
 
-&lt;h3 id=&quot;道&quot;&gt;「道」&lt;/h3&gt;
+&lt;h3 id=&quot;section-4&quot;&gt;「道」&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;面向对象基础&lt;/li&gt;
@@ -579,7 +588,7 @@
   &lt;li&gt;进阶：通过学习lisp（Elixir亦可），来反观Ruby中block（函数式编程风格），以及元编程的实现（Lisp是暴露AST的宏，Ruby是利用Block和作用域隐式操作AST的宏）&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;术&quot;&gt;「术」&lt;/h3&gt;
+&lt;h3 id=&quot;section-5&quot;&gt;「术」&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;各种具体类型的处理方法和方式，比如字符串和相关编码、正则表达式、IO等处理&lt;/li&gt;
@@ -597,8 +606,8 @@
 
 </description>
         <pubDate>Mon, 30 May 2016 23:40:54 +0800</pubDate>
-        <link>http://localhost:4000/2016/05/30/map-DevLang-Ruby.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/05/30/map-DevLang-Ruby.html</guid>
+        <link>http://yourdomain.com/2016/05/30/map-DevLang-Ruby.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2016/05/30/map-DevLang-Ruby.html</guid>
         
         
       </item>
@@ -629,8 +638,8 @@
 
 </description>
         <pubDate>Mon, 25 Apr 2016 14:04:54 +0800</pubDate>
-        <link>http://localhost:4000/2016/04/25/%E6%88%91%E7%9A%84To-do-list.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/04/25/%E6%88%91%E7%9A%84To-do-list.html</guid>
+        <link>http://yourdomain.com/2016/04/25/%E6%88%91%E7%9A%84To-do-list.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2016/04/25/%E6%88%91%E7%9A%84To-do-list.html</guid>
         
         
       </item>
