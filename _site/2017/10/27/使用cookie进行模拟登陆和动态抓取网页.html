@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Ruby的技能图谱</title>
-  <meta name="description" content="本篇博客是我摘抄自StuQ 程序员技能图谱是由 StuQ（http://www.stuq.org/）发起的一个技术社区开源项目，如要引用，请移步到官网。谢谢。">
+  <title>使用cookie进行模拟登陆和动态抓取网页</title>
+  <meta name="description" content="爬虫有时候困难的地方，在于两点：">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://yourdomain.com/2016/05/30/Map-DevLang-Ruby.html">
+  <link rel="canonical" href="http://yourdomain.com/2017/10/27/%E4%BD%BF%E7%94%A8cookie%E8%BF%9B%E8%A1%8C%E6%A8%A1%E6%8B%9F%E7%99%BB%E9%99%86%E5%92%8C%E5%8A%A8%E6%80%81%E6%8A%93%E5%8F%96%E7%BD%91%E9%A1%B5.html">
   <link rel="alternate" type="application/rss+xml" title="烟雨任平生的博客" href="http://yourdomain.com/feed.xml">
 </head>
 
@@ -57,103 +57,45 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Ruby的技能图谱</h1>
-    <p class="post-meta"><time datetime="2016-05-30T23:40:54+08:00" itemprop="datePublished">May 30, 2016</time></p>
+    <h1 class="post-title" itemprop="name headline">使用cookie进行模拟登陆和动态抓取网页</h1>
+    <p class="post-meta"><time datetime="2017-10-27T00:00:00+08:00" itemprop="datePublished">Oct 27, 2017</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>本篇博客是我摘抄自StuQ 程序员技能图谱是由 StuQ（http://www.stuq.org/）发起的一个技术社区开源项目，如要引用，请移步到官网。谢谢。</p>
-
-<p>说明： 本图谱只捡重点的列举，并非包含全部。文中所列举或没有列举的资源信息都可以在<a href="https://github.com/markets/awesome-ruby">awesome-ruby</a>中找到。</p>
-
-<h2 id="ruby">Ruby应用生态</h2>
+    <p>爬虫有时候困难的地方，在于两点：</p>
 
 <ul>
-  <li><a href="#Web开发">Web开发</a></li>
-  <li><a href="#自动化测试">自动化测试</a></li>
-  <li><a href="#安全">安全</a></li>
-  <li><a href="#云计算基础">云计算基础</a></li>
-  <li><a href="#嵌入式">嵌入式</a></li>
-</ul>
-
-<h3 id="web">Web开发</h3>
-
-<ul>
-  <li>Rails全栈式Web框架</li>
-  <li>轻量级Web开发框架（Sinatra，Cuba等）</li>
-  <li>异步无阻塞Ruby Server框架：Goliath</li>
-</ul>
-
-<h3 id="section">自动化测试</h3>
-
-<ul>
-  <li>RSpec： BDD测试框架</li>
-  <li>Cucumber: BDD验收测试框架</li>
-  <li>Watir: Web应用测试工具</li>
-</ul>
-
-<h3 id="section-1">安全</h3>
-
-<ul>
-  <li>Metasploit：也许是最好的渗透测试框架</li>
-  <li>Gitrob: Github敏感信息收集工具</li>
-</ul>
-
-<h3 id="section-2">云计算基础</h3>
-
-<ul>
-  <li>chef:   自动化运维工具</li>
-  <li>puppet: 自动化运维工具</li>
-  <li>fog: 强大的云服务库</li>
-</ul>
-
-<h3 id="section-3">嵌入式</h3>
-
-<ul>
-  <li>mruby:  Ruby的轻量版本，为嵌入式开发而生</li>
-  <li><a href="https://github.com/hone/mruby-cli">mruby-cli</a>: 为linux等平台构建本地命令行应用</li>
-</ul>
-
-<h2 id="web-1">Web开发需要学习的主力框架</h2>
-
-<ul>
-  <li>Rails: 全栈Web开发框架</li>
-  <li>Sinatra: 轻量级的Web开发框架</li>
-  <li>Goliath: 异步非阻塞Ruby Server框架</li>
-</ul>
-
-<h2 id="ruby-1">彻底掌握Ruby所需要的「道」与「术」</h2>
-
-<h3 id="section-4">「道」</h3>
-
-<ul>
-  <li>面向对象基础</li>
-  <li>深入理解Ruby背后的设计哲学和设计原则</li>
-  <li>深入理解Ruby对象模型</li>
-  <li>深入理解block和闭包</li>
-  <li>深入理解Ruby的作用域</li>
-  <li>深入理解Ruby的方法查找机制</li>
-  <li>深入理解Ruby的内存管理（变量和对象内存布局，GC算法和工作机制）</li>
-  <li>进阶：有余力的可以研究Ruby底层的实现</li>
-  <li>进阶：通过学习lisp（Elixir亦可），来反观Ruby中block（函数式编程风格），以及元编程的实现（Lisp是暴露AST的宏，Ruby是利用Block和作用域隐式操作AST的宏）</li>
-</ul>
-
-<h3 id="section-5">「术」</h3>
-
-<ul>
-  <li>各种具体类型的处理方法和方式，比如字符串和相关编码、正则表达式、IO等处理</li>
-  <li>并发与并行：
-    <ul>
-      <li>彻底了解Ruby的GIL及其机制</li>
-      <li>彻底了解Ruby线程的发展变化及其工作机制（从用户线程到本地线程）</li>
-      <li>彻底了解Fiber及其应用（重点在Goliath中的应用，终结异步回调地狱）</li>
-      <li>彻底了解进程相关（重点在各种Ruby多进程应用服务器的工作机制）</li>
-      <li>尝试了解基于actor模型的Ruby并发库Celluloid。</li>
-    </ul>
+  <li>
+    <p>模拟登陆</p>
   </li>
-  <li>社区中各种Gem的实现原理及其用法</li>
+  <li>
+    <p>抓取动态网页</p>
+  </li>
 </ul>
 
+<hr />
+
+<p>越来越多的网页，如果需要看到，都必须要登陆才能看到，所以我们要爬取某些内容的话，都要进行模拟登陆，模拟登陆有很多的方法，这里我就说两个。</p>
+
+<p>1，提交用户名和密码登陆，找到login的 url， 分析需要提交的表单，其中包括：用户名，密码，还有验证码(大多数情
+况下都需要)，而且现在的验证码方式千奇百怪，各种各种，碰到传统的图片中的文字，还好解决，碰到其他的，真是一头
+包。</p>
+
+<p>2，使用cookie登陆，首先，我们要理解什么是cookie？很多网站，为了维持登陆状态，都会采用回话session进行实现，每次网站后台都会确认是不是已经登陆的客户，但是我又不能每次都让用户输入账户密码，所以，就要在用户端的cookie中，保存着用户的信息，每次用户要执行request，都会把cookie一起提交过去，服务端就会在用户提交的cookie中确定用户的信息。那么我们模拟登陆的办法就来了：1，cookie是存在客户端的，我们可以获取到。2，我们可以在请求的时候，把cookie数据一起提交，以达到让服务器认为我们已经登陆的消息。</p>
+
+<p>所以我们可以采用cookie登陆的方式，进行模拟登陆，但是cookie一般是由过期时间的，所以我们就要去维护cookie的持久性。</p>
+
+<hr />
+
+<p>另外一点，为了更好的用户体验，动态的加载网页，只更新需要更新的数据，大多数网站采用了Ajax的技术，异步加载的方式进行网页更新，这就对我们的爬虫产生了挑战，因为你要抓取的数据，可能是不在网页中的，那么我们就要去在网页中分析，Ajax请求的网页的url，然后用爬虫的方式，去获取该要的数据。</p>
+
+<p>这一点，我们就要去分析js的脚本，去看看这个url究竟在哪里，去哪里请求。</p>
+
+<hr />
+
+<p>以上两点，我就以知乎为力，写一个我的个人主页中，系统自动推送给我的那一页的问题和答案，用到使用cookie登陆和抓取动态网页这两个常用的东西。</p>
+
+<p>github仓库地址：</p>
 
   </div>
 

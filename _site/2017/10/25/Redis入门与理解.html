@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Ruby的技能图谱</title>
-  <meta name="description" content="本篇博客是我摘抄自StuQ 程序员技能图谱是由 StuQ（http://www.stuq.org/）发起的一个技术社区开源项目，如要引用，请移步到官网。谢谢。">
+  <title>Redis 入门与理解</title>
+  <meta name="description" content="Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://yourdomain.com/2016/05/30/Map-DevLang-Ruby.html">
+  <link rel="canonical" href="http://yourdomain.com/2017/10/25/Redis%E5%85%A5%E9%97%A8%E4%B8%8E%E7%90%86%E8%A7%A3.html">
   <link rel="alternate" type="application/rss+xml" title="烟雨任平生的博客" href="http://yourdomain.com/feed.xml">
 </head>
 
@@ -57,103 +57,52 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Ruby的技能图谱</h1>
-    <p class="post-meta"><time datetime="2016-05-30T23:40:54+08:00" itemprop="datePublished">May 30, 2016</time></p>
+    <h1 class="post-title" itemprop="name headline">Redis 入门与理解</h1>
+    <p class="post-meta"><time datetime="2017-10-25T00:00:00+08:00" itemprop="datePublished">Oct 25, 2017</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>本篇博客是我摘抄自StuQ 程序员技能图谱是由 StuQ（http://www.stuq.org/）发起的一个技术社区开源项目，如要引用，请移步到官网。谢谢。</p>
+    <p>Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。</p>
 
-<p>说明： 本图谱只捡重点的列举，并非包含全部。文中所列举或没有列举的资源信息都可以在<a href="https://github.com/markets/awesome-ruby">awesome-ruby</a>中找到。</p>
+<p>Redis通常被称为数据结构服务器，因为值（value）可以是 字符串(String), 哈希(Map), 列表(list), 集合(sets) 和 有序集合(sorted sets)等类型。</p>
 
-<h2 id="ruby">Ruby应用生态</h2>
+<p>所谓Key-Value数据库，也就是所存储的数据，全部都是以Key-Value的形式来存储。在Redis里面，没有table的概念，当然你也可以把table当做key来看待。</p>
 
-<ul>
-  <li><a href="#Web开发">Web开发</a></li>
-  <li><a href="#自动化测试">自动化测试</a></li>
-  <li><a href="#安全">安全</a></li>
-  <li><a href="#云计算基础">云计算基础</a></li>
-  <li><a href="#嵌入式">嵌入式</a></li>
-</ul>
+<p>Redis里面，都是key，每一个key，对应一个value，其中，value可以包含以下几种数据类型。</p>
 
-<h3 id="web">Web开发</h3>
+<p>key-string</p>
 
-<ul>
-  <li>Rails全栈式Web框架</li>
-  <li>轻量级Web开发框架（Sinatra，Cuba等）</li>
-  <li>异步无阻塞Ruby Server框架：Goliath</li>
-</ul>
+<p>key-hash（有些叫map，也可以理解成是python里面的dic）</p>
 
-<h3 id="section">自动化测试</h3>
+<p>key-list</p>
 
-<ul>
-  <li>RSpec： BDD测试框架</li>
-  <li>Cucumber: BDD验收测试框架</li>
-  <li>Watir: Web应用测试工具</li>
-</ul>
+<p>key-set</p>
 
-<h3 id="section-1">安全</h3>
+<p>key-sorted set</p>
 
-<ul>
-  <li>Metasploit：也许是最好的渗透测试框架</li>
-  <li>Gitrob: Github敏感信息收集工具</li>
-</ul>
+<p>Redis命令，提供了大量的对于Key-Value操作的函数，我们可以通过redis-cli客户端进行操作和查询。</p>
 
-<h3 id="section-2">云计算基础</h3>
+<p>另外一点，Redis提供了多种语言的API，如果我们队Python比较熟悉，可以下载和安装redis-py的模块，进行redis的操作。</p>
 
-<ul>
-  <li>chef:   自动化运维工具</li>
-  <li>puppet: 自动化运维工具</li>
-  <li>fog: 强大的云服务库</li>
-</ul>
+<p>附注：</p>
 
-<h3 id="section-3">嵌入式</h3>
+<p>redis的安装：</p>
 
-<ul>
-  <li>mruby:  Ruby的轻量版本，为嵌入式开发而生</li>
-  <li><a href="https://github.com/hone/mruby-cli">mruby-cli</a>: 为linux等平台构建本地命令行应用</li>
-</ul>
+<p>$ wget http://download.redis.io/releases/redis-4.0.2.tar.gz</p>
 
-<h2 id="web-1">Web开发需要学习的主力框架</h2>
+<p>$ tar xzf redis-4.0.2.tar.gz</p>
 
-<ul>
-  <li>Rails: 全栈Web开发框架</li>
-  <li>Sinatra: 轻量级的Web开发框架</li>
-  <li>Goliath: 异步非阻塞Ruby Server框架</li>
-</ul>
+<p>$ cd redis-4.0.2</p>
 
-<h2 id="ruby-1">彻底掌握Ruby所需要的「道」与「术」</h2>
+<p>$ make</p>
 
-<h3 id="section-4">「道」</h3>
+<p>启动redis服务：redis-server</p>
 
-<ul>
-  <li>面向对象基础</li>
-  <li>深入理解Ruby背后的设计哲学和设计原则</li>
-  <li>深入理解Ruby对象模型</li>
-  <li>深入理解block和闭包</li>
-  <li>深入理解Ruby的作用域</li>
-  <li>深入理解Ruby的方法查找机制</li>
-  <li>深入理解Ruby的内存管理（变量和对象内存布局，GC算法和工作机制）</li>
-  <li>进阶：有余力的可以研究Ruby底层的实现</li>
-  <li>进阶：通过学习lisp（Elixir亦可），来反观Ruby中block（函数式编程风格），以及元编程的实现（Lisp是暴露AST的宏，Ruby是利用Block和作用域隐式操作AST的宏）</li>
-</ul>
+<p>启动redis客户端： redis-cli</p>
 
-<h3 id="section-5">「术」</h3>
+<p>redis-py的安装：</p>
 
-<ul>
-  <li>各种具体类型的处理方法和方式，比如字符串和相关编码、正则表达式、IO等处理</li>
-  <li>并发与并行：
-    <ul>
-      <li>彻底了解Ruby的GIL及其机制</li>
-      <li>彻底了解Ruby线程的发展变化及其工作机制（从用户线程到本地线程）</li>
-      <li>彻底了解Fiber及其应用（重点在Goliath中的应用，终结异步回调地狱）</li>
-      <li>彻底了解进程相关（重点在各种Ruby多进程应用服务器的工作机制）</li>
-      <li>尝试了解基于actor模型的Ruby并发库Celluloid。</li>
-    </ul>
-  </li>
-  <li>社区中各种Gem的实现原理及其用法</li>
-</ul>
-
+<p>$ pip install redis</p>
 
   </div>
 

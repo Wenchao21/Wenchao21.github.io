@@ -5,9 +5,104 @@
     <description></description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 24 Oct 2017 23:13:27 +0800</pubDate>
-    <lastBuildDate>Tue, 24 Oct 2017 23:13:27 +0800</lastBuildDate>
+    <pubDate>Thu, 02 Nov 2017 00:00:52 +0800</pubDate>
+    <lastBuildDate>Thu, 02 Nov 2017 00:00:52 +0800</lastBuildDate>
     <generator>Jekyll v3.1.3</generator>
+    
+      <item>
+        <title>使用cookie进行模拟登陆和动态抓取网页</title>
+        <description>&lt;p&gt;爬虫有时候困难的地方，在于两点：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;模拟登陆&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;抓取动态网页&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;越来越多的网页，如果需要看到，都必须要登陆才能看到，所以我们要爬取某些内容的话，都要进行模拟登陆，模拟登陆有很多的方法，这里我就说两个。&lt;/p&gt;
+
+&lt;p&gt;1，提交用户名和密码登陆，找到login的 url， 分析需要提交的表单，其中包括：用户名，密码，还有验证码(大多数情
+况下都需要)，而且现在的验证码方式千奇百怪，各种各种，碰到传统的图片中的文字，还好解决，碰到其他的，真是一头
+包。&lt;/p&gt;
+
+&lt;p&gt;2，使用cookie登陆，首先，我们要理解什么是cookie？很多网站，为了维持登陆状态，都会采用回话session进行实现，每次网站后台都会确认是不是已经登陆的客户，但是我又不能每次都让用户输入账户密码，所以，就要在用户端的cookie中，保存着用户的信息，每次用户要执行request，都会把cookie一起提交过去，服务端就会在用户提交的cookie中确定用户的信息。那么我们模拟登陆的办法就来了：1，cookie是存在客户端的，我们可以获取到。2，我们可以在请求的时候，把cookie数据一起提交，以达到让服务器认为我们已经登陆的消息。&lt;/p&gt;
+
+&lt;p&gt;所以我们可以采用cookie登陆的方式，进行模拟登陆，但是cookie一般是由过期时间的，所以我们就要去维护cookie的持久性。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;另外一点，为了更好的用户体验，动态的加载网页，只更新需要更新的数据，大多数网站采用了Ajax的技术，异步加载的方式进行网页更新，这就对我们的爬虫产生了挑战，因为你要抓取的数据，可能是不在网页中的，那么我们就要去在网页中分析，Ajax请求的网页的url，然后用爬虫的方式，去获取该要的数据。&lt;/p&gt;
+
+&lt;p&gt;这一点，我们就要去分析js的脚本，去看看这个url究竟在哪里，去哪里请求。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;以上两点，我就以知乎为力，写一个我的个人主页中，系统自动推送给我的那一页的问题和答案，用到使用cookie登陆和抓取动态网页这两个常用的东西。&lt;/p&gt;
+
+&lt;p&gt;github仓库地址：&lt;/p&gt;
+</description>
+        <pubDate>Fri, 27 Oct 2017 00:00:00 +0800</pubDate>
+        <link>http://yourdomain.com/2017/10/27/%E4%BD%BF%E7%94%A8cookie%E8%BF%9B%E8%A1%8C%E6%A8%A1%E6%8B%9F%E7%99%BB%E9%99%86%E5%92%8C%E5%8A%A8%E6%80%81%E6%8A%93%E5%8F%96%E7%BD%91%E9%A1%B5.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2017/10/27/%E4%BD%BF%E7%94%A8cookie%E8%BF%9B%E8%A1%8C%E6%A8%A1%E6%8B%9F%E7%99%BB%E9%99%86%E5%92%8C%E5%8A%A8%E6%80%81%E6%8A%93%E5%8F%96%E7%BD%91%E9%A1%B5.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Redis 入门与理解</title>
+        <description>&lt;p&gt;Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。&lt;/p&gt;
+
+&lt;p&gt;Redis通常被称为数据结构服务器，因为值（value）可以是 字符串(String), 哈希(Map), 列表(list), 集合(sets) 和 有序集合(sorted sets)等类型。&lt;/p&gt;
+
+&lt;p&gt;所谓Key-Value数据库，也就是所存储的数据，全部都是以Key-Value的形式来存储。在Redis里面，没有table的概念，当然你也可以把table当做key来看待。&lt;/p&gt;
+
+&lt;p&gt;Redis里面，都是key，每一个key，对应一个value，其中，value可以包含以下几种数据类型。&lt;/p&gt;
+
+&lt;p&gt;key-string&lt;/p&gt;
+
+&lt;p&gt;key-hash（有些叫map，也可以理解成是python里面的dic）&lt;/p&gt;
+
+&lt;p&gt;key-list&lt;/p&gt;
+
+&lt;p&gt;key-set&lt;/p&gt;
+
+&lt;p&gt;key-sorted set&lt;/p&gt;
+
+&lt;p&gt;Redis命令，提供了大量的对于Key-Value操作的函数，我们可以通过redis-cli客户端进行操作和查询。&lt;/p&gt;
+
+&lt;p&gt;另外一点，Redis提供了多种语言的API，如果我们队Python比较熟悉，可以下载和安装redis-py的模块，进行redis的操作。&lt;/p&gt;
+
+&lt;p&gt;附注：&lt;/p&gt;
+
+&lt;p&gt;redis的安装：&lt;/p&gt;
+
+&lt;p&gt;$ wget http://download.redis.io/releases/redis-4.0.2.tar.gz&lt;/p&gt;
+
+&lt;p&gt;$ tar xzf redis-4.0.2.tar.gz&lt;/p&gt;
+
+&lt;p&gt;$ cd redis-4.0.2&lt;/p&gt;
+
+&lt;p&gt;$ make&lt;/p&gt;
+
+&lt;p&gt;启动redis服务：redis-server&lt;/p&gt;
+
+&lt;p&gt;启动redis客户端： redis-cli&lt;/p&gt;
+
+&lt;p&gt;redis-py的安装：&lt;/p&gt;
+
+&lt;p&gt;$ pip install redis&lt;/p&gt;
+</description>
+        <pubDate>Wed, 25 Oct 2017 00:00:00 +0800</pubDate>
+        <link>http://yourdomain.com/2017/10/25/Redis%E5%85%A5%E9%97%A8%E4%B8%8E%E7%90%86%E8%A7%A3.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2017/10/25/Redis%E5%85%A5%E9%97%A8%E4%B8%8E%E7%90%86%E8%A7%A3.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>用数据讲故事-分析中国的古诗词</title>
@@ -462,188 +557,6 @@ data_analyze: 此目录为使用NLTK和jieba分词库进行数据的筛选和清
         <pubDate>Fri, 24 Jun 2016 00:00:00 +0800</pubDate>
         <link>http://yourdomain.com/2016/06/24/%E8%BF%99%E6%98%AF%E4%B8%80%E7%AF%87%E6%B5%8B%E8%AF%95%E6%96%87%E6%A1%A3.html</link>
         <guid isPermaLink="true">http://yourdomain.com/2016/06/24/%E8%BF%99%E6%98%AF%E4%B8%80%E7%AF%87%E6%B5%8B%E8%AF%95%E6%96%87%E6%A1%A3.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Python的I/O操作</title>
-        <description>&lt;h3 id=&quot;section&quot;&gt;主要分为两个部分，一个文件操作，一个目录操作。因为老是记不住，所以记在这里，方便查看。&lt;/h3&gt;
-
-&lt;h4 id=&quot;flag&quot;&gt;文件打开的Flag含义&lt;/h4&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;标志位&lt;/th&gt;
-      &lt;th&gt;含义&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;r&lt;/td&gt;
-      &lt;td&gt;读&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;w&lt;/td&gt;
-      &lt;td&gt;写&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;a&lt;/td&gt;
-      &lt;td&gt;追加&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;r+&lt;/td&gt;
-      &lt;td&gt;读写&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;w+&lt;/td&gt;
-      &lt;td&gt;读写&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;a+&lt;/td&gt;
-      &lt;td&gt;读写&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;b&lt;/td&gt;
-      &lt;td&gt;以2进制格式进行读写&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&quot;section-1&quot;&gt;代码示例&lt;/h4&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;test.txt&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;opne&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;r&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-&lt;span class=&quot;s&quot;&gt;&quot;写文件内容&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;filename_2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;write.txt&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;opne&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filename_2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;w&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wenchao+test&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-
-&lt;span class=&quot;c&quot;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;#打开一个文件&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;myfile.txt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a+&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Thu, 23 Jun 2016 16:38:11 +0800</pubDate>
-        <link>http://yourdomain.com/2016/06/23/Python-IO%E6%93%8D%E4%BD%9C.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2016/06/23/Python-IO%E6%93%8D%E4%BD%9C.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Ruby的技能图谱</title>
-        <description>&lt;p&gt;本篇博客是我摘抄自StuQ 程序员技能图谱是由 StuQ（http://www.stuq.org/）发起的一个技术社区开源项目，如要引用，请移步到官网。谢谢。&lt;/p&gt;
-
-&lt;p&gt;说明： 本图谱只捡重点的列举，并非包含全部。文中所列举或没有列举的资源信息都可以在&lt;a href=&quot;https://github.com/markets/awesome-ruby&quot;&gt;awesome-ruby&lt;/a&gt;中找到。&lt;/p&gt;
-
-&lt;h2 id=&quot;ruby&quot;&gt;Ruby应用生态&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;#Web开发&quot;&gt;Web开发&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#自动化测试&quot;&gt;自动化测试&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#安全&quot;&gt;安全&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#云计算基础&quot;&gt;云计算基础&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#嵌入式&quot;&gt;嵌入式&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;web&quot;&gt;Web开发&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Rails全栈式Web框架&lt;/li&gt;
-  &lt;li&gt;轻量级Web开发框架（Sinatra，Cuba等）&lt;/li&gt;
-  &lt;li&gt;异步无阻塞Ruby Server框架：Goliath&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;section&quot;&gt;自动化测试&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;RSpec： BDD测试框架&lt;/li&gt;
-  &lt;li&gt;Cucumber: BDD验收测试框架&lt;/li&gt;
-  &lt;li&gt;Watir: Web应用测试工具&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;section-1&quot;&gt;安全&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Metasploit：也许是最好的渗透测试框架&lt;/li&gt;
-  &lt;li&gt;Gitrob: Github敏感信息收集工具&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;section-2&quot;&gt;云计算基础&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;chef:   自动化运维工具&lt;/li&gt;
-  &lt;li&gt;puppet: 自动化运维工具&lt;/li&gt;
-  &lt;li&gt;fog: 强大的云服务库&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;section-3&quot;&gt;嵌入式&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;mruby:  Ruby的轻量版本，为嵌入式开发而生&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/hone/mruby-cli&quot;&gt;mruby-cli&lt;/a&gt;: 为linux等平台构建本地命令行应用&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;web-1&quot;&gt;Web开发需要学习的主力框架&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Rails: 全栈Web开发框架&lt;/li&gt;
-  &lt;li&gt;Sinatra: 轻量级的Web开发框架&lt;/li&gt;
-  &lt;li&gt;Goliath: 异步非阻塞Ruby Server框架&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;ruby-1&quot;&gt;彻底掌握Ruby所需要的「道」与「术」&lt;/h2&gt;
-
-&lt;h3 id=&quot;section-4&quot;&gt;「道」&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;面向对象基础&lt;/li&gt;
-  &lt;li&gt;深入理解Ruby背后的设计哲学和设计原则&lt;/li&gt;
-  &lt;li&gt;深入理解Ruby对象模型&lt;/li&gt;
-  &lt;li&gt;深入理解block和闭包&lt;/li&gt;
-  &lt;li&gt;深入理解Ruby的作用域&lt;/li&gt;
-  &lt;li&gt;深入理解Ruby的方法查找机制&lt;/li&gt;
-  &lt;li&gt;深入理解Ruby的内存管理（变量和对象内存布局，GC算法和工作机制）&lt;/li&gt;
-  &lt;li&gt;进阶：有余力的可以研究Ruby底层的实现&lt;/li&gt;
-  &lt;li&gt;进阶：通过学习lisp（Elixir亦可），来反观Ruby中block（函数式编程风格），以及元编程的实现（Lisp是暴露AST的宏，Ruby是利用Block和作用域隐式操作AST的宏）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;section-5&quot;&gt;「术」&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;各种具体类型的处理方法和方式，比如字符串和相关编码、正则表达式、IO等处理&lt;/li&gt;
-  &lt;li&gt;并发与并行：
-    &lt;ul&gt;
-      &lt;li&gt;彻底了解Ruby的GIL及其机制&lt;/li&gt;
-      &lt;li&gt;彻底了解Ruby线程的发展变化及其工作机制（从用户线程到本地线程）&lt;/li&gt;
-      &lt;li&gt;彻底了解Fiber及其应用（重点在Goliath中的应用，终结异步回调地狱）&lt;/li&gt;
-      &lt;li&gt;彻底了解进程相关（重点在各种Ruby多进程应用服务器的工作机制）&lt;/li&gt;
-      &lt;li&gt;尝试了解基于actor模型的Ruby并发库Celluloid。&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;社区中各种Gem的实现原理及其用法&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Mon, 30 May 2016 23:40:54 +0800</pubDate>
-        <link>http://yourdomain.com/2016/05/30/map-DevLang-Ruby.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2016/05/30/map-DevLang-Ruby.html</guid>
         
         
       </item>
